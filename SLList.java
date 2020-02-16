@@ -2,29 +2,21 @@ public class SLList {
    
    public IntNode first;
    
-   public static void main(String[] args) {
-      
-   }
+   
    
    public SLList(int x){
-      front = new IntNode(int x, null);
+      first = new IntNode(int x, null);
    }
    
-   public addFirst(int x){
-      front = new IntNode(int x, this.front);
+   public void addFirst(int x){
+      first = new IntNode(int x, first);
    }
    
-   public getFirst(){
-      return this.front;
+   public int getFirst(){
+      return first.item;
    }
-}
-
-public class IntNode{
-   public int item;
-   public IntNode next;
    
-   public IntNode(int i, IntNode n){
-      item = i;
-      next = n;
+   public static void main(String[] args) {
+      SLList L = new SLList(10);
    }
 }
