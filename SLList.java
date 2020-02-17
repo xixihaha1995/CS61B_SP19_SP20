@@ -25,6 +25,17 @@ public class SLList {
    }
  
    
+    private static int size(IntNode p){
+      if (p.next==null){
+         return 1;
+      }
+         return 1 + size(p.next);
+   }
+   
+   public int size(){
+      return size(first);
+   }
+   
    public static void main(String[] args) {
       SLList L = new SLList(10);
       L.addFirst(1);
