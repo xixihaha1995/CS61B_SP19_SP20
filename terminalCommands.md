@@ -1,4 +1,11 @@
+
 bash terminal
+
+[touch] create new file
+
+[vim]
+
+[cat]
 
 pwd: print working directory
 
