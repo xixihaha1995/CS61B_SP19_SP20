@@ -1,13 +1,12 @@
+  
 public class ClassNameHere {
    public static int max(int[] m) {
       int maxIndex = 0;
-      int p = 0;
       int l = m.length;
-      while(p < l){  
+      for (int p = 0; p < l; p +=1){
          if (m[p] > m[maxIndex]){
             maxIndex = p;
          }
-         p += 1;
       }
       return m[maxIndex];
    }
