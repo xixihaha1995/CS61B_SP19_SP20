@@ -1,3 +1,4 @@
+
     public static List<Integer> oddNumbers(int l, int r) {
     // Write your code here
     List<Integer> list = new ArrayList<Integer>();
@@ -8,8 +9,8 @@
 
         list.add(l);
     }
-    for(int i=1;i<list.size();i++) {
-        if(i>list.size()) {
+    for(int i=1;i<r-l;i++) {
+        if(list.get(i-1)+2>r) {
             break;
         }
         list.add(list.get(i-1)+2);
