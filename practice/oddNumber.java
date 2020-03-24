@@ -8,7 +8,10 @@
 
         list.add(l);
     }
-    for(int i=1;i<=list.size();i++) {
+    for(int i=1;i<list.size();i++) {
+        if(i>list.size()) {
+            break;
+        }
         list.add(list.get(i-1)+2);
     }
     return list;
