@@ -1,7 +1,8 @@
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *     int val;
+ *     int val; try something
+ * go on try something
  *     ListNode next;
  *     ListNode(int x) { val = x; }
  * }
