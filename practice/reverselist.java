@@ -9,13 +9,17 @@
 class Solution {
     public ListNode reverseList(ListNode head) {
         ListNode reverlist = new ListNode();
-        ListNode temp = new ListNode();
-        reverlist.val=head.val;
-        while(head != null) {
-            head=head.next;
-            temp.val=head.val;
-            temp.next=reverlist;
-            reverlist=temp;
+        ListNode pointer = new ListNode();
+        ListNode old = new ListNode();
+        pointer = head;
+        old=pointer;
+        reverlist=old;
+        reverlist.next=null;
+        while(pointer.next != null) {
+            pointer=pointer.next;
+            reverlist=old;
+            reverlist.next=old;
+            old=old.next;
         }
         return reverlist;
     }
