@@ -13,7 +13,11 @@ class Solution {
         ListNode nextpoi = new ListNode();
         ListNode prev = new ListNode();
         curr = head;
+<<<<<<< HEAD
         prev = null;
+=======
+        
+>>>>>>> origin/master
         while(curr != null) {
             nextpoi=curr.next;
             curr.next=prev;
