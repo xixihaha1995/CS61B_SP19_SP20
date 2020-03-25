@@ -12,6 +12,7 @@ class Solution {
         ListNode nextpoi = new ListNode();
         ListNode prev = new ListNode();
         curr = head;
+        
         while(curr != null) {
             nextpoi=curr.next;
             curr.next=prev;
