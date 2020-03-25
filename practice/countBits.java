@@ -5,7 +5,7 @@ class Solution {
         
         for (int i=0;i<num+1;i++) {
             int occ = 0;
-            double cur=IntToDoubleFunction(i);
+            double cur=i;
 
             if(cur==0) {
               occ=0;
