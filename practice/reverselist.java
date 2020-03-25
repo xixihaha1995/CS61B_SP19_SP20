@@ -9,22 +9,14 @@
 class Solution {
     public ListNode reverseList(ListNode head) {
         ListNode reverlist = new ListNode();
+        ListNode temp = new ListNode();
         reverlist.val=head.val;
-        
-        ListNode pointer;
-        ListNode repointer;
-        pointer = head;
-        repointer=reverlist;
         while(head != null) {
-             while(pointer.next != null) {
-                pointer=pointer.next;
-            }
-            repointer.val=pointer.val;
-            repointer=repointer.next;
-            pointer=pointer.next;
+            head=head.next;
+            temp.val=head.val;
+            temp.next=reverlist;
+            reverlist=temp;
         }
         return reverlist;
-           
-        
     }
 }
