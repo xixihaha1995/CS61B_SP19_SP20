@@ -8,19 +8,16 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode reverlist = new ListNode();
-        ListNode pointer = new ListNode();
-        ListNode old = new ListNode();
-        pointer = head;
-        old=pointer;
-        reverlist=old;
-        reverlist.next=null;
-        while(pointer.next != null) {
-            pointer=pointer.next;
-            reverlist=old;
-            reverlist.next=old;
-            old=old.next;
+        ListNode curr = new ListNode();
+        ListNode nextpoi = new ListNode();
+        ListNode prev = new ListNode();
+        curr = head;
+        while(curr != null) {
+            nextpoi=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=nextpoi;
         }
-        return reverlist;
+        return prev;
     }
 }
