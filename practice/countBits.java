@@ -18,18 +18,15 @@ class Solution {
                 break;
              }else {
                 int exp = 1;
-                while((Math.pow(2,exp))<=cur) {
-                    
-                    if ((Math.pow(2,exp))==cur){
-                        occ++;
-                        break;
-                    }
-                    else {
-                      exp++;                  
-                    }  
-
+                while((Math.pow(2,exp))<cur) {
+                  exp++;
                 }
-          
+
+                if ((Math.pow(2,exp))==cur){
+                            occ++;
+                            break;
+                          }
+
               if ((Math.pow(2,(exp-1))==cur)) {
                   occ++;
                   break;
