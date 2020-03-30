@@ -96,6 +96,6 @@ class solution(object):
                     return False
         return True
 if __name__=='__main__':
-    s= ")["
+    s= "[({(())}[()])]"
     solution().isValid(s)
     
