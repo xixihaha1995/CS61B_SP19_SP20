@@ -13,14 +13,17 @@ class solution(object):
         if length==2:
             if s[0]=='(':
                 if s[1] !=')':
-                    
                     return False
+                return True
             if s[0]=='[':
                 if not s[1] ==']':
                     return False
+                return True
             if s[0]=='{':
                 if not s[1] =='}':
                     return False
+                return True
+            return False
         
         indexLeftOne=[]
         indexLeftTwo=[]
@@ -39,8 +42,12 @@ class solution(object):
         #right=w-1
         right=0
         for i in range(0,length):
+#            if left>w-1:
+#                return False
             if s[i] =='(':
                 indexLeftOne.append(left)
+                if left>w-1:
+                   return False
                 index[0][left]=i
                 left+=1
             if s[i]==')':
@@ -51,6 +58,8 @@ class solution(object):
                 
             if s[i] =='{':
                 indexLeftTwo.append(left)
+                if left>w-1:
+                   return False
                 index[0][left]=i
                 left+=1
             if s[i]=='}':
@@ -61,6 +70,8 @@ class solution(object):
                 
             if s[i] =='[':
                 indexLeftThree.append(left)
+                if left>w-1:
+                   return False
                 index[0][left]=i
                 left+=1
             if s[i]==']':
