@@ -1,5 +1,5 @@
 class Solution(object):
-def isValid(self, s):
+   def isValid(self, s):
         """
         :type s: str
         :rtype: bool
@@ -9,7 +9,18 @@ def isValid(self, s):
         length=len(s)
         if not length%2==0:
             return False
-        
+        if length==2:
+            if s[0]=='(':
+                if s[1] !=')':
+                    
+                    return False
+            if s[0]=='[':
+                if not s[1] ==']':
+                    return False
+            if s[0]=='{':
+                if not s[1] =='}':
+                    return False
+            
         w=int(length/2)
         h=2
         index =[[0 for x in range(w)] for y in range(h)]
@@ -30,7 +41,7 @@ def isValid(self, s):
         """
         for i in range(0,w-1):
             for j in range (i+1, w):
-                if index[0][j]<index[1][i]:
+                if index[0][j]<index[1][i] :
                     return False
         return True
             
