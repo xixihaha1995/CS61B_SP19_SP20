@@ -20,7 +20,17 @@ class Solution(object):
             if s[0]=='{':
                 if not s[1] =='}':
                     return False
-            
+        
+        indexLeftOne=[]
+        indexLeftTwo=[]
+        indexLeftThree=[]
+        # inOne=0
+        # inTwo=0
+        # inThree=0
+        inRightOne=0
+        inRightTwo=0
+        inRightThree=0        
+        
         w=int(length/2)
         h=2
         index =[[0 for x in range(w)] for y in range(h)]
@@ -28,21 +38,42 @@ class Solution(object):
         #right=w-1
         right=0
         for i in range(0,length):
-            if s[i] =='(' or s[i] =='[' or s[i] =='{' :
+            if s[i] =='(':
+                indexLeftOne.append(left)
                 index[0][left]=i
                 left+=1
-            else:
-                index[1][right]=i
-                #right-=1
-                right+=1
+            if s[i]==')':
+                index[1][indexLeftOne[len(indexLeftOne)-1-inRightOne]]=i
+                inRightOne+=1
+                
+            if s[i] =='{':
+                indexLeftTwo.append(left)
+                index[0][left]=i
+                left+=1
+            if s[i]=='}':
+                index[1][indexLeftTwo[len(indexLeftTwo)-1-inRightTwo]]=i
+                inRightTwo+=1
+                
+            if s[i] =='[':
+                indexLeftThree.append(left)
+                index[0][left]=i
+                left+=1
+            if s[i]==']':
+                index[1][indexLeftThree[len(indexLeftThree)-1-inRightThree]]=i
+                inRightThree+=1        
+            # if s[i] =='(' or s[i] =='[' or s[i] =='{' :
+            #     index[0][left]=i
+            #     left+=1
+            # else:
+            #     index[1][right]=i
+            #     #right-=1
+            #     right+=1
         """
         from index 0 to index w-1
         check from next pair of parentheses
         """
         for i in range(0,w-1):
             for j in range (i+1, w):
-                if index[0][j]<index[1][i] :
+                if index[0][j]<index[1][i] and index[1][i]<index[1][j]:
                     return False
         return True
-            
-                
