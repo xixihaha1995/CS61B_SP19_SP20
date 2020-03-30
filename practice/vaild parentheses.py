@@ -1,4 +1,5 @@
-class Solution(object):
+class solution(object):
+     
    def isValid(self, s):
         """
         :type s: str
@@ -43,6 +44,8 @@ class Solution(object):
                 index[0][left]=i
                 left+=1
             if s[i]==')':
+                if len(indexLeftOne)-1-inRightOne<0:
+                    return False
                 index[1][indexLeftOne[len(indexLeftOne)-1-inRightOne]]=i
                 inRightOne+=1
                 
@@ -51,6 +54,8 @@ class Solution(object):
                 index[0][left]=i
                 left+=1
             if s[i]=='}':
+                if len(indexLeftTwo)-1-inRightTwo<0:
+                    return False
                 index[1][indexLeftTwo[len(indexLeftTwo)-1-inRightTwo]]=i
                 inRightTwo+=1
                 
@@ -59,6 +64,8 @@ class Solution(object):
                 index[0][left]=i
                 left+=1
             if s[i]==']':
+                if len(indexLeftThree)-1-inRightThree<0:
+                    return False                
                 index[1][indexLeftThree[len(indexLeftThree)-1-inRightThree]]=i
                 inRightThree+=1        
             # if s[i] =='(' or s[i] =='[' or s[i] =='{' :
@@ -77,3 +84,7 @@ class Solution(object):
                 if index[0][j]<index[1][i] and index[1][i]<index[1][j]:
                     return False
         return True
+if __name__=='__main__':
+    s= ")["
+    solution().isValid(s)
+    
