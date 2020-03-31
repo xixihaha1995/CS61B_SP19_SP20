@@ -1,5 +1,4 @@
-class solution(object):
-
+class Solution(object):
     def isValid(self, s):
         """
         :type s: str
@@ -51,9 +50,9 @@ class solution(object):
                 index[0][left] = i
                 left += 1
             if s[i] == ')':
-                #               if len(indexLeftOne)-1-inRightOne<0:
-                #                   return False
-                index[1][indexLeftOne.pop()] = i
+                if len(indexLeftOne) - 1 - inRightOne < 0:
+                    return False
+                index[1][indexLeftOne[len(indexLeftOne) - 1 - inRightOne]] = i
                 inRightOne += 1
 
             if s[i] == '{':
@@ -63,9 +62,9 @@ class solution(object):
                 index[0][left] = i
                 left += 1
             if s[i] == '}':
-                #                if len(indexLeftTwo)-1-inRightTwo<0:
-                #                    return False
-                index[1][indexLeftTwo.pop()] = i
+                if len(indexLeftTwo) - 1 - inRightTwo < 0:
+                    return False
+                index[1][indexLeftTwo[len(indexLeftTwo) - 1 - inRightTwo]] = i
                 inRightTwo += 1
 
             if s[i] == '[':
@@ -75,9 +74,9 @@ class solution(object):
                 index[0][left] = i
                 left += 1
             if s[i] == ']':
-                #                if len(indexLeftThree)-1-inRightThree<0:
-                #                    return False
-                index[1][indexLeftThree.pop()] = i
+                if len(indexLeftThree) - 1 - inRightThree < 0:
+                    return False
+                index[1][indexLeftThree[len(indexLeftThree) - 1 - inRightThree]] = i
                 inRightThree += 1
                 # if s[i] =='(' or s[i] =='[' or s[i] =='{' :
             #     index[0][left]=i
