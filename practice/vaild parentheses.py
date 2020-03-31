@@ -50,9 +50,11 @@ class Solution(object):
                 index[0][left] = i
                 left += 1
             if s[i] == ')':
-                if len(indexLeftOne) - 1 - inRightOne < 0:
+                #               if len(indexLeftOne)-1-inRightOne<0:
+                #                   return False
+                if not indexLeftOne:
                     return False
-                index[1][indexLeftOne[len(indexLeftOne) - 1 - inRightOne]] = i
+                index[1][indexLeftOne.pop()] = i
                 inRightOne += 1
 
             if s[i] == '{':
@@ -62,9 +64,11 @@ class Solution(object):
                 index[0][left] = i
                 left += 1
             if s[i] == '}':
-                if len(indexLeftTwo) - 1 - inRightTwo < 0:
+                #                if len(indexLeftTwo)-1-inRightTwo<0:
+                #                    return False
+                if not indexLeftTwo:
                     return False
-                index[1][indexLeftTwo[len(indexLeftTwo) - 1 - inRightTwo]] = i
+                index[1][indexLeftTwo.pop()] = i
                 inRightTwo += 1
 
             if s[i] == '[':
@@ -74,9 +78,11 @@ class Solution(object):
                 index[0][left] = i
                 left += 1
             if s[i] == ']':
-                if len(indexLeftThree) - 1 - inRightThree < 0:
+                #                if len(indexLeftThree)-1-inRightThree<0:
+                #                    return False
+                if not indexLeftThree:
                     return False
-                index[1][indexLeftThree[len(indexLeftThree) - 1 - inRightThree]] = i
+                index[1][indexLeftThree.pop()] = i
                 inRightThree += 1
                 # if s[i] =='(' or s[i] =='[' or s[i] =='{' :
             #     index[0][left]=i
