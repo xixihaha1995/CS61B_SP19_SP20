@@ -1,21 +1,18 @@
 public class Intlist {
     private int first;
     private Intlist rest;
-    private Intlist pointer;
 
 
     public Intlist(int head, Intlist next) {
         first = head;
         rest = next;
-        pointer = head;
+
     }
     public int get(int i){
-        int index = 0;
-        while(index != i){
-            this = this.rest;
-            index +=1;
+        if (rest == null) {
+            return first;
         }
-        return this.first;
+        return this.rest.get(i-1);
     }
     public int size(){
         if(this.rest == null) {
@@ -23,7 +20,15 @@ public class Intlist {
         }
         return 1 + this.rest.size();
     }
+
     public int iterativeSize(){
-        Intlist p =
+        Intlist p = this;
+        int count = 0;
+        while(p != null) {
+            p = p.rest;
+            count += 1;
+        }
+        return count;
+
     }
 }
