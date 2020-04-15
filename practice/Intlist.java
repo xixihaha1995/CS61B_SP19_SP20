@@ -9,7 +9,7 @@ public class Intlist {
 
     }
     public int get(int i){
-        if (rest == null) {
+        if (i == 0) {
             return first;
         }
         return this.rest.get(i-1);
