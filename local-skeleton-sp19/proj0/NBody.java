@@ -1,9 +1,9 @@
 public class NBody{
-    public static int readNumBodies(String s){
-        In in = new In(s);
-        int numBody = in.readInt();
-        return numBody;
-    }
+//    public static int readNumBodies(String s){
+//        In in = new In(s);
+//        int numBody = in.readInt();
+//        return numBody;
+//    }
     public static double readRadius(String s){
         In in = new In(s);
         int numBody =  in.readInt();
@@ -41,7 +41,7 @@ public class NBody{
         dt= Double.parseDouble(args[1]);
         filename = args[2];
 
-        n = NBody.readNumBodies(filename);
+//        n = NBody.readNumBodies(filename);
         radius = NBody.readRadius(filename);
         allBodys = NBody.readBodies(filename);
 
@@ -51,9 +51,9 @@ public class NBody{
         // StdDraw.picture(0,0,img);
 
         for(double t = 0; t<T; t = t+dt){
-            double[] xForces = new double[n];
-            double[] yForces = new double[n];
-            for (int i=0;i<n;i++){
+            double[] xForces = new double[allBodys.length];
+            double[] yForces = new double[allBodys.length];
+            for (int i=0;i<allBodys.length;i++){
                 xForces[i] = allBodys[i].calcNetForceExertedByX(allBodys);
                 yForces[i] = allBodys[i].calcNetForceExertedByY(allBodys);
                 allBodys[i].update(dt,xForces[i],yForces[i]);
