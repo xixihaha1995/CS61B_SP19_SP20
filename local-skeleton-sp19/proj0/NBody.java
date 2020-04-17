@@ -56,7 +56,7 @@ public class NBody{
             for (int i=0;i<n;i++){
                 xForces[i] = allBodys[i].calcNetForceExertedByX(allBodys);
                 yForces[i] = allBodys[i].calcNetForceExertedByY(allBodys);
-                allBodys[i].update(xForces[i],yForces[i],dt);
+                allBodys[i].update(dt,xForces[i],yForces[i]);
             }
             String img = "images/starfield.jpg";
             StdDraw.picture(0,0,img);
