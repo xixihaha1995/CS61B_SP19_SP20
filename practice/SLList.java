@@ -12,9 +12,10 @@ public class SLList {
     private IntNode first;
     private int count;
 
-    public SLList (int x) {
-        first = new IntNode(x, null);
-        count=1;
+    public SLList () {
+        IntNode temp = new IntNode(6, null);
+        first = temp.next;
+        count=0;
     }
     public void addFirst(int i){
         first = new IntNode(i, first);
