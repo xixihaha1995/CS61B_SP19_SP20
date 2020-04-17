@@ -17,4 +17,21 @@ public class NBody{
         }
         return allBodys;
     }
+
+    public static void main(String[] args) {
+        double T;
+        double dt;
+        String filename;
+
+        double radius;
+        Body[] allBodys;
+
+        T = Double.parseDouble(args[0]);
+        dt= Double.parseDouble(args[1]);
+        filename = args[2];
+
+        radius = NBody.readRadius(filename);
+        allBodys = NBody.readBodies(filename);
+
+    }
 }
