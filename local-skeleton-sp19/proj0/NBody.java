@@ -17,6 +17,11 @@ public class NBody{
         }
         return allBodys;
     }
+    public static void draw(Body[] allBodys){
+        for(Body i: allBodys){
+            i.draw();
+        }
+    }
 
     public static void main(String[] args) {
         double T;
@@ -37,6 +42,7 @@ public class NBody{
         StdDraw.setScale(-radius, radius);
         String img = "images/starfield.jpg";
         StdDraw.picture(0,0,img);
+        NBody.draw(allBodys);
         StdDraw.show();
 
     }
