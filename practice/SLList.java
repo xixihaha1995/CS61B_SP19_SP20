@@ -1,4 +1,14 @@
 public class SLList {
+
+    private static class IntNode{
+        public int item;
+        public IntNode next;
+
+        public IntNode(int i, IntNode n){
+            item = i;
+            next = n;
+        }
+    }
     private IntNode first;
 
     public SLList (int x) {
