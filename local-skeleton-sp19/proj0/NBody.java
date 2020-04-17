@@ -33,5 +33,11 @@ public class NBody{
         radius = NBody.readRadius(filename);
         allBodys = NBody.readBodies(filename);
 
+        StdDraw.enableDoubleBuffering();
+        StdDraw.setScale(-radius, radius);
+        String img = "images/starfield.jpg";
+        StdDraw.picture(0,0,img);
+        StdDraw.show();
+
     }
 }
