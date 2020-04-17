@@ -9,20 +9,19 @@ public class SLList {
             next = n;
         }
     }
-    private IntNode first;
+    private IntNode sentinel;
     private int count;
 
     public SLList () {
-        IntNode temp = new IntNode(6, null);
-        first = temp.next;
+        sentinel = new IntNode(6, null);
         count=0;
     }
     public void addFirst(int i){
-        first = new IntNode(i, first);
+        sentinel.next = new IntNode(i, sentinel.next);
         count+=1;
     }
     public void addLast(int i){
-        IntNode p = first;
+        IntNode p = sentinel.next;
         count+=1;
         while(p.next != null) {
             p=p.next;
@@ -30,7 +29,7 @@ public class SLList {
         p.next= new IntNode(i, null);
     }
     public int getFirst(){
-        return first.item;
+        return sentinel.next.item;
     }
 
     private static int size(IntNode p){
