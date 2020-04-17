@@ -3,6 +3,7 @@ public class SLLOperation{
         SLList ex = new SLList(6);
         ex.addFirst(9);
         ex.addFirst(1);
-        System.out.println(ex.getFirst());
+        ex.addLast(12);
+        System.out.println(ex.size());
     }
 }
