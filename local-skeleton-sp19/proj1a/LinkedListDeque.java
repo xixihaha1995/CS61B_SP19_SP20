@@ -4,7 +4,7 @@ public class LinkedListDeque<genericType> {
         public genericType item;
         public IntNode next;
 
-        public IntNode(IntNode p, genericType i, IntNode n) {
+        public IntNode<IntNode p, genericType i, IntNode n>{
             prev = p;
             item = i;
             next = n;
@@ -15,7 +15,7 @@ public class LinkedListDeque<genericType> {
     private int size;
 
     public LinkedListDeque () {
-        sentinel = new IntNode(null, 6, null);
+        sentinel = new IntNode<>;
         sentinel.prev = sentinel;
         sentinel.next = sentinel;
         size = 0;
