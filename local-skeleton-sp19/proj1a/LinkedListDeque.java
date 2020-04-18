@@ -4,14 +4,14 @@ public class LinkedListDeque<genericType> {
         public genericType item;
         public IntNode next;
 
-        public IntNode<>(IntNode p, genericType i, IntNode n){
+        public IntNode(IntNode p, genericType i, IntNode n){
             prev = p;
             item = i;
             next = n;
         }
     }
 
-    private IntNode sentinel;
+    private IntNode<IntNode, genericType, IntNode> sentinel;
     private int size;
 
     public LinkedListDeque () {
