@@ -53,6 +53,7 @@ public class Body{
 		dy = b.yyPos - yyPos;
 		force = this.calcForceExertedBy(b);
 		forceYY =force * dy / distance;
+	
 		return forceYY;
 
 	}
