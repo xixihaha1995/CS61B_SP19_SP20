@@ -15,7 +15,7 @@ public class ArrayDeque {
 			resizing();
 		}
 		if(nextFirst<0){
-			nextFirst = nextLast;
+			nextFirst = items.length-1;
 		}
 
 		items[nextFirst] = i;
@@ -27,7 +27,7 @@ public class ArrayDeque {
 			resizing();
 		}
 		if(nextLast>(items.length-1)){
-			nextLast = nextFirst;
+			nextLast = 0;
 		}
 		items[nextLast]=i;
 		nextLast +=1;
@@ -46,7 +46,11 @@ public class ArrayDeque {
 	public void printDeque(){
 		int p = nextFirst+1;
 		for(int i= 0; i<size;i++){
-			System.out.print(items[])
+			if(p>(items.length-1)){
+				ed3
+			}
+			System.out.print(items[p]);
+			p++;
 		}
 	}
 
