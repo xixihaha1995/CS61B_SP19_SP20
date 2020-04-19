@@ -47,11 +47,24 @@ public class ArrayDeque {
 		int p = nextFirst+1;
 		for(int i= 0; i<size;i++){
 			if(p>(items.length-1)){
-				ed3
+				p=0;
 			}
 			System.out.print(items[p]);
 			p++;
 		}
 	}
+	public int removeFirst(){
+		if(nextFirst+1==items.length){
+			items[0]=null;
+			nextFirst=0;
+			return items[1];
+		}else{
+			items[nextFirst+1]=null;
+			nextFirst+=1;
+			return items[nextFirst+1];
+		}
+
+	}
+	public
 
 }
