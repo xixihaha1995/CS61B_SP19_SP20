@@ -34,6 +34,8 @@ public class LinkedListDeque<genericType> {
     public boolean isEmpty(){
         if (size == 0){
             return true;
+        }else{
+            return false;
         }
     }
     public int size(){
@@ -74,12 +76,24 @@ public class LinkedListDeque<genericType> {
         return p.item;
     }
     public LinkedListDeque(LinkedListDeque other){
-        sentinel = new genericNode(null, null, null);
+        sentinel = other.sentinel;
         size = other.size();
-        addLast(other.get(i));
+        for(int i = 0; i< size; i++){
+            addLast((genericType) other.get(i));
         }
 
     }
+    public genericType getRecursive(int index){
+        genericNode p =sentinel.next;
+        return getRecursive(p, index);
 
+    }
+    private genericType getRecursive(genericNode poin, int index){
+        if(index==0){
+            return poin.item;
+        }
+        return getRecursive(poin.next,index-1);
+
+    }
 }
 
