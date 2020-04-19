@@ -12,7 +12,7 @@ public class ArrayDeque {
 	}
 	public void addFirst(int i){
 		if(size==items.length){
-			resizing();
+			resizing(items.length*2);
 		}
 		if(nextFirst<0){
 			nextFirst = items.length-1;
@@ -54,6 +54,7 @@ public class ArrayDeque {
 		}
 	}
 	public int removeFirst(){
+		size -=1;
 		if(nextFirst+1==items.length){
 			items[0]=null;
 			nextFirst=0;
@@ -65,6 +66,32 @@ public class ArrayDeque {
 		}
 
 	}
-	public
+	public int removeLast(){
+		size-=1;
+		if(nextLast-1<0){
+			items[items.length-1]=null;
+			nextLast = items.length-1;
+
+			return items[nextLast -1];
+		}else{
+			items[nextLast-1]=null;
+			nextLast -=1;
+			return items[nextLast-1];
+		}
+
+	}
+	public int get(int index){
+		if (nextFirst+1+index>=items.length){
+			return items[nextFirst+1+index-items.length];
+		}else{
+			return items[nextFirst+1+index];
+		}
+		
+	}
+	public void resizing(int cap){
+		itemsNew = new int[cap];
+		System.arraycopy(items,0,itemsNew,0,size);
+		items = itemsNew;
+	}
 
 }
