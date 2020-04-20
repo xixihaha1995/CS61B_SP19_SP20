@@ -67,8 +67,9 @@ public class ArrayDeque<genericType> {
 		size -=1;
 		items[circular(nextFirst+1)]=null;
 		nextFirst= circular(nextFirst+1);
+		double length=items.length;
 
-		double ratiou = size/items.length;
+		double ratiou = size/length;
 		if(ratiou<0.25){
 			resizing((int) Math.round(items.length/2));
 		}
@@ -118,7 +119,7 @@ public class ArrayDeque<genericType> {
 		if (old<0){
 			return old+items.length;
 		}
-		if(old>items.length) {
+		if(old>=items.length) {
 			return old - items.length;
 		}
 		return old;
