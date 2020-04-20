@@ -1,17 +1,17 @@
-public class ArrayDeque {
-	public int[] items;
+public class ArrayDeque<genericType> {
+	public genericType[] items;
 	public int size;
 	public int nextFirst;
 	public int nextLast;
 
 	public ArrayDeque(){
-		items= new int[8];
+		items=(genericType []) new Object[8];
 		size = 0;
 		nextFirst =2;
 		nextLast = 3;
 	}
 	public ArrayDeque(ArrayDeque other){
-		items = new int[other.size()];
+		items = (genericType []) new Object[other.size()];
 		size = other.size();
 		for(int i=0;i<size;i++){
 			addFirst(other.get(i));
@@ -62,7 +62,7 @@ public class ArrayDeque {
 			p=circular(p+1);
 		}
 	}
-	public int removeFirst(){
+	public genericType removeFirst(){
 		size -=1;
 		items[circular(nextFirst+1)]=null;
 		nextFirst= circular(nextFirst+1);
@@ -75,7 +75,7 @@ public class ArrayDeque {
 		return items[circular(nextFirst+1)];
 
 	}
-	public int removeLast(){
+	public genericType removeLast(){
 		size-=1;
 		items[circular(nextLast-1)]=null;
 		nextLast=circular(nextLast-1);
@@ -86,7 +86,7 @@ public class ArrayDeque {
 		return items[circular(nextLast-1)];
 
 	}
-	public int get(int index){
+	public genericType get(int index){
 		if (nextFirst+1+index>=items.length){
 			return items[nextFirst+1+index-items.length];
 		}else{
@@ -95,7 +95,7 @@ public class ArrayDeque {
 		
 	}
 	private void resizing(int cap){
-		int[] itemsNew = new int[cap];
+		genericType[] itemsNew =(genericType []) new Object[cap];
 		System.arraycopy(items,0,itemsNew,0,size);
 		items = itemsNew;
 	}
