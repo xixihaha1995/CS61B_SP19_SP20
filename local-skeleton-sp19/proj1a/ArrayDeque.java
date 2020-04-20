@@ -1,5 +1,7 @@
 public class ArrayDeque<genericType> {
 	public genericType[] items;
+	private genericType[] itemsResized;
+
 	public int size;
 	public int nextFirst;
 	public int nextLast;
@@ -29,6 +31,18 @@ public class ArrayDeque<genericType> {
 		// }
 
 		items[circular(nextFirst)] = i;
+		nextFirst =circular(nextFirst-1);
+		size +=1;
+	}
+	private void addFirstResized(genericType i){
+		if(size==items.length){
+			resizing(items.length*2);
+		}
+		// if(nextFirst<0){
+		// 	nextFirst = items.length-1;
+		// }
+
+		itemsResized[circular(nextFirst)] = i;
 		nextFirst =circular(nextFirst-1);
 		size +=1;
 	}
@@ -98,13 +112,17 @@ public class ArrayDeque<genericType> {
 		
 	}
 	private void resizing(int cap){
-		genericType[] itemsNew =(genericType []) new Object[cap];
+		ArrayDeque(this,cap);
+		items = itemsResized;
+//		genericType[] itemsNew =(genericType []) new Object[cap];
 
-		System.arraycopy(items,circular(nextFirst+1),itemsNew,0,size-circular(nextFirst+1));
-		System.arraycopy(items,0,itemsNew,size-circular(nextFirst+1),circular(nextFirst+1));
-		items = itemsNew;
-		nextFirst=circular(-1);
-		nextLast=size;
+//		resizeCopy(this,cap);
+
+//		System.arraycopy(items,circular(nextFirst+1),itemsNew,0,size-circular(nextFirst+1));
+//		System.arraycopy(items,0,itemsNew,size-circular(nextFirst+1),circular(nextFirst+1));
+//		items = itemsNew;
+//		nextFirst=circular(-1);
+//		nextLast=size;
 	}
 	private int circular(int old){
 //		if (old< items.length || old > 0){
@@ -126,6 +144,17 @@ public class ArrayDeque<genericType> {
 
 
 	}
+	private ArrayDeque(ArrayDeque<genericType> other, int cap){
+		itemsResized = (genericType[]) new Object[cap];
+
+		for(int i=0;i<other.size;i++){
+			addFirstResized((genericType) other.get(i));
+		}
+		size = other.size();
+		nextFirst = cap -1;
+		nextLast = size;
+	}
+
 
 
 }
