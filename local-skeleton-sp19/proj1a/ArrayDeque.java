@@ -10,6 +10,15 @@ public class ArrayDeque {
 		nextFirst =2;
 		nextLast = 3;
 	}
+	public ArrayDeque(ArrayDeque other){
+		items = new int[other.size()];
+		size = other.size();
+		for(int i=0;i<size;i++){
+			addFirst(other.get(i));
+		}
+		nextFirst = size -1;
+		nextLast = 0;
+	}
 	public void addFirst(int i){
 		if(size==items.length){
 			resizing(items.length*2);
@@ -63,7 +72,7 @@ public class ArrayDeque {
 	public int removeLast(){
 		size-=1;
 		items[circular(nextLast-1)]=null;
-		nextLast=circualr(nextLast-1);
+		nextLast=circular(nextLast-1);
 		return items[circular(nextLast-1)];
 
 	}
@@ -75,8 +84,8 @@ public class ArrayDeque {
 		}
 		
 	}
-	public void resizing(int cap){
-		itemsNew = new int[cap];
+	private void resizing(int cap){
+		int[] itemsNew = new int[cap];
 		System.arraycopy(items,0,itemsNew,0,size);
 		items = itemsNew;
 	}
@@ -92,5 +101,6 @@ public class ArrayDeque {
 		}
 
 	}
+
 
 }
