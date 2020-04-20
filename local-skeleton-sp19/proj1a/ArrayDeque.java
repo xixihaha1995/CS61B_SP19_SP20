@@ -112,17 +112,18 @@ public class ArrayDeque<genericType> {
 		
 	}
 	private void resizing(int cap){
-		ArrayDeque(this,cap);
-		items = itemsResized;
-//		genericType[] itemsNew =(genericType []) new Object[cap];
+//		ArrayDeque(this,cap);
+//		items = itemsResized;
+		genericType[] itemsNew =(genericType []) new Object[cap];
 
 //		resizeCopy(this,cap);
+		System.arraycopy(items,circular(nextFirst+1),itemsNew,0,size);
 
 //		System.arraycopy(items,circular(nextFirst+1),itemsNew,0,size-circular(nextFirst+1));
 //		System.arraycopy(items,0,itemsNew,size-circular(nextFirst+1),circular(nextFirst+1));
-//		items = itemsNew;
-//		nextFirst=circular(-1);
-//		nextLast=size;
+		items = itemsNew;
+		nextFirst=circular(-1);
+		nextLast=size;
 	}
 	private int circular(int old){
 //		if (old< items.length || old > 0){
