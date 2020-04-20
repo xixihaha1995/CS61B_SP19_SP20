@@ -14,12 +14,12 @@ public class ArrayDeque<genericType> {
 		items = (genericType []) new Object[other.size()];
 		size = other.size();
 		for(int i=0;i<size;i++){
-			addFirst(other.get(i));
+			addFirst((genericType) other.get(i));
 		}
 		nextFirst = size -1;
 		nextLast = 0;
 	}
-	public void addFirst(int i){
+	public void addFirst(genericType i){
 		if(size==items.length){
 			resizing(items.length*2);
 		}
@@ -31,7 +31,7 @@ public class ArrayDeque<genericType> {
 		nextFirst =circular(nextFirst-1);
 		size +=1;
 	}
-	public void addLast(int i){
+	public void addLast(genericType i){
 		if(size==items.length){
 			resizing(items.length*2);
 		}
@@ -79,6 +79,7 @@ public class ArrayDeque<genericType> {
 		size-=1;
 		items[circular(nextLast-1)]=null;
 		nextLast=circular(nextLast-1);
+		double ratiou = size/items.length;
 
 		if(ratiou<0.25){
 			resizing((int) Math.round(items.length/2));
@@ -100,15 +101,23 @@ public class ArrayDeque<genericType> {
 		items = itemsNew;
 	}
 	private int circular(int old){
-		if (old< items.length || old > 0){
-			return old;
-		}
+//		if (old< items.length || old > 0){
+//			return old;
+//		}
+//		else if (old<0){
+//			return old+items.length;
+//		}
+//		else if(old>items.length){
+//			return old-items.length;
+//		}
 		if (old<0){
 			return old+items.length;
 		}
-		if(old>items.length){
-			return old-items.length;
+		if(old>items.length) {
+			return old - items.length;
 		}
+		return old;
+
 
 	}
 
