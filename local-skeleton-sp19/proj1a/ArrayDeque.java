@@ -14,23 +14,23 @@ public class ArrayDeque {
 		if(size==items.length){
 			resizing(items.length*2);
 		}
-		if(nextFirst<0){
-			nextFirst = items.length-1;
-		}
+		// if(nextFirst<0){
+		// 	nextFirst = items.length-1;
+		// }
 
-		items[nextFirst] = i;
-		nextFirst -= 1;
+		items[circular(nextFirst)] = i;
+		nextFirst =circular(nextFirst-1);
 		size +=1;
 	}
 	public void addLast(int i){
 		if(size==items.length){
-			resizing();
+			resizing(items.length*2);
 		}
-		if(nextLast>(items.length-1)){
-			nextLast = 0;
-		}
-		items[nextLast]=i;
-		nextLast +=1;
+		// if(nextLast>(items.length-1)){
+		// 	nextLast = 0;
+		// }
+		items[circular(nextLast)]=i;
+		nextLast =circular(nextLast+1);
 		size +=1;
 	}
 	public boolean isEmpty(){
@@ -44,40 +44,27 @@ public class ArrayDeque {
 		return size;
 	}
 	public void printDeque(){
-		int p = nextFirst+1;
+		int p = circular(nextFirst+1);
 		for(int i= 0; i<size;i++){
-			if(p>(items.length-1)){
-				p=0;
-			}
+			// if(p>(items.length-1)){
+			// 	p=0;
+			// }
 			System.out.print(items[p]);
-			p++;
+			p=circular(p+1);
 		}
 	}
 	public int removeFirst(){
 		size -=1;
-		if(nextFirst+1==items.length){
-			items[0]=null;
-			nextFirst=0;
-			return items[1];
-		}else{
-			items[nextFirst+1]=null;
-			nextFirst+=1;
-			return items[nextFirst+1];
-		}
+		items[circular(nextFirst+1)]=null;
+		nextFirst= circular(nextFirst+1);
+		return items[circular(nextFirst+1)];
 
 	}
 	public int removeLast(){
 		size-=1;
-		if(nextLast-1<0){
-			items[items.length-1]=null;
-			nextLast = items.length-1;
-
-			return items[nextLast -1];
-		}else{
-			items[nextLast-1]=null;
-			nextLast -=1;
-			return items[nextLast-1];
-		}
+		items[circular(nextLast-1)]=null;
+		nextLast=circualr(nextLast-1);
+		return items[circular(nextLast-1)];
 
 	}
 	public int get(int index){
@@ -92,6 +79,18 @@ public class ArrayDeque {
 		itemsNew = new int[cap];
 		System.arraycopy(items,0,itemsNew,0,size);
 		items = itemsNew;
+	}
+	private int circular(int old){
+		if (old< items.length || old > 0){
+			return old;
+		}
+		if (old<0){
+			return old+items.length;
+		}
+		if(old>items.length){
+			return old-items.length;
+		}
+
 	}
 
 }
