@@ -78,17 +78,24 @@ public class ArrayDeque<genericType> {
 		}
 	}
 	public genericType removeFirst(){
-		size -=1;
+
 		items[circular(nextFirst+1)]=null;
+
 		nextFirst= circular(nextFirst+1);
+		size -=1;
 		double length=items.length;
 
 		double ratiou = size/length;
-		if(ratiou<0.25){
+		if(ratiou<0.25 && items.length>8){
 			resizing((int) Math.round(items.length/2));
 		}
+		if (isEmpty()){
+			return null;
+		}else{
+			return items[circular(nextFirst+1)];
+		}
 
-		return items[circular(nextFirst+1)];
+
 
 	}
 	public genericType removeLast(){
