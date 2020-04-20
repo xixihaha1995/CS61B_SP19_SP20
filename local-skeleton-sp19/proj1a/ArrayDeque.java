@@ -115,9 +115,16 @@ public class ArrayDeque<genericType> {
 //		ArrayDeque(this,cap);
 //		items = itemsResized;
 		genericType[] itemsNew =(genericType []) new Object[cap];
+		int minusOne=circular(nextLast-1);
 
 //		resizeCopy(this,cap);
-		System.arraycopy(items,circular(nextFirst+1),itemsNew,0,size);
+		if(minusOne>nextFirst){
+			System.arraycopy(items,circular(nextFirst+1),itemsNew,0,size);
+		}else{
+			System.arraycopy(items,circular(nextFirst+1),itemsNew,0,size-(minusOne+1));
+			System.arraycopy(items,0,itemsNew,size-(minusOne+1),minusOne+1);
+		}
+
 
 //		System.arraycopy(items,circular(nextFirst+1),itemsNew,0,size-circular(nextFirst+1));
 //		System.arraycopy(items,0,itemsNew,size-circular(nextFirst+1),circular(nextFirst+1));
@@ -155,6 +162,10 @@ public class ArrayDeque<genericType> {
 		nextFirst = cap -1;
 		nextLast = size;
 	}
+//	private int getMinusOne(){
+//
+//	}
+
 
 
 
