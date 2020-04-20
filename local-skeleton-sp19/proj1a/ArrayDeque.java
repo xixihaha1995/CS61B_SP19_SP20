@@ -66,6 +66,12 @@ public class ArrayDeque {
 		size -=1;
 		items[circular(nextFirst+1)]=null;
 		nextFirst= circular(nextFirst+1);
+
+		double ratiou = size/items.length;
+		if(ratiou<0.25){
+			resizing((int) Math.round(items.length/2));
+		}
+
 		return items[circular(nextFirst+1)];
 
 	}
@@ -73,6 +79,10 @@ public class ArrayDeque {
 		size-=1;
 		items[circular(nextLast-1)]=null;
 		nextLast=circular(nextLast-1);
+
+		if(ratiou<0.25){
+			resizing((int) Math.round(items.length/2));
+		}
 		return items[circular(nextLast-1)];
 
 	}
