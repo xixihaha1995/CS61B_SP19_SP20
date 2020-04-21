@@ -84,6 +84,13 @@ public class ArrayDeque<genericType> implements Deque<genericType> {
 	}
 	@Override
 	public genericType removeFirst(){
+		genericType front;
+
+		if (isEmpty()){
+			front = null;
+		}else{
+			front =  items[circular(nextFirst+1)];
+		}
 
 		items[circular(nextFirst+1)]=null;
 
@@ -95,11 +102,8 @@ public class ArrayDeque<genericType> implements Deque<genericType> {
 		if(ratiou<0.25 && items.length>8){
 			resizing((int) Math.round(items.length/2));
 		}
-		if (isEmpty()){
-			return null;
-		}else{
-			return items[circular(nextFirst+1)];
-		}
+		return front;
+
 
 
 
