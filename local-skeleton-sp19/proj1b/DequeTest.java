@@ -4,10 +4,10 @@ import org.junit.Test;
 public class DequeTest {
     @Test
     public void testAddFirst(){
-        String input = "cat";
-        Deque<String> deque = new Deque<String>();
+        String input = 'cat';
+        Deque<String> deque = new ArrayDeque<String>();
         deque.addFirst(input);
-        assertArrayEquals(input,deque);
+        assertArrayEquals(input,deque.get(0));
     }
 
 }
