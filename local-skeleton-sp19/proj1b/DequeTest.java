@@ -9,6 +9,7 @@ public class DequeTest {
         deque.addFirst(input);
         String out = deque.get(0);
         assertEquals(input,out);
+        assertEquals(false,deque.isEmpty());
     }
 
 
