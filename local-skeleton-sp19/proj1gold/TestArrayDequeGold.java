@@ -6,7 +6,7 @@ public class TestArrayDequeGold {
         StudentArrayDeque<Integer> sad1 = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> ads1 = new ArrayDequeSolution<>();
 
-        for (int i = 0; i < 10; i += 1) {
+        for (int i = 0; i < 100; i += 1) {
             double numberBetweenZeroAndOne = StdRandom.uniform();
 
             if (numberBetweenZeroAndOne < 0.5) {
@@ -20,7 +20,8 @@ public class TestArrayDequeGold {
 
             }
         }
-        for (int i = 0; i < 10; i += 1) {
+        int index  =  (int) Math.min(sad1.size(),ads1.size());
+        for (int i = 0; i < index; i += 1) {
             double numberBetweenZeroAndOne = StdRandom.uniform();
 
             if (numberBetweenZeroAndOne < 0.5) {
