@@ -20,7 +20,17 @@ public class Palindrome {
     }
     public boolean isEqual(Deque<Character> a, Deque<Character> b){
         // TODO how to compare a and b
-        if (a == b){
+
+        String A = "";
+        String B = "";
+        for (int i = 0; i < a.size(); i++) {
+            A += a.removeFirst();
+        }
+        for (int i = 0; i < b.size(); i++) {
+            B += b.removeFirst();
+        }
+
+        if (A == B){
             return true;
         }else {
             return false;

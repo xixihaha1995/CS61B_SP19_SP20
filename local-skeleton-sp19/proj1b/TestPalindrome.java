@@ -29,10 +29,12 @@ public class TestPalindrome {
         assertEquals("tac",actual);
 
     }
-//    @Test
-//    public void testIsEqual(){
+    @Test
+    public void testIsEqual(){
+        Deque a = palindrome.wordToDeque("persiflage");
+        Deque b = palindrome.wordToDeque("persiflage");
 //        String a = "cat";
 //        String b = "cat";
-//        assertTrue(palindrome.isEqual(a,b));
-//    }
+        assertTrue(palindrome.isEqual(a,b));
+    }
 }
