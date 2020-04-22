@@ -20,6 +20,7 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("cat"));
         assertFalse(palindrome.isPalindrome("persiflage"));
         assertFalse(palindrome.isPalindrome("Aa"));
+        assertFalse(palindrome.isPalindrome("AAAAAB"));
         assertTrue(palindrome.isPalindrome("a"));
         assertTrue(palindrome.isPalindrome(""));
         assertTrue(palindrome.isPalindrome("aaa"));
