@@ -15,7 +15,7 @@ public class Palindrome {
             return true;
         }else{
             Deque<Character> rev = reverse(word);
-            return Palindrome.isEqual(wordToDeque(word),rev);
+            return isEqual(wordToDeque(word),rev);
         }
     }
     public boolean isEqual(Deque<Character> a, Deque<Character> b){
