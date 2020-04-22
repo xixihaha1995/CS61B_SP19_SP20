@@ -18,6 +18,16 @@ public class Palindrome {
             return isEqual(wordToDeque(word), rev);
         }
     }
+
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        if (wordToDeque(word).size() < 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     public boolean isEqual(Deque<Character> a, Deque<Character> b) {
         // TODO how to compare a and b
 
