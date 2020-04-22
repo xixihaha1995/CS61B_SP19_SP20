@@ -20,13 +20,13 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
-        if (wordToDeque(word).size() < 2) {
+        Deque a = wordToDeque(word);
+        Deque b = reverse(word);
+        if (a.size() < 2) {
             return true;
         } else {
-            Deque a = wordToDeque(word);
-            Deque b = reverse(word);
-            int count = (int) Math.round(word.length()/2.0);
 
+            int count = (int) Math.round(word.length()/2.0);
 
             if (word.length() % 2 != 0){
                 // TODO odd size word
