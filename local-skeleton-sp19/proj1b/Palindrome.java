@@ -23,16 +23,31 @@ public class Palindrome {
         if (wordToDeque(word).size() < 2) {
             return true;
         } else {
+            Deque a = wordToDeque(word);
+            Deque b = reverse(word);
+            int count = (int) Math.round(word.length()/2.0);
+
+
             if (word.length() % 2 != 0){
                 // TODO odd size word
-
-                cc.equalChars(head, tail);
+                return isEqual(a, b, cc, count - 1);
             } else {
                 //TODO even size word
-                return false;
+                return isEqual(a, b, cc, count);
             }
 
         }
+    }
+    public boolean isEqual(Deque<Character> a, Deque<Character> b, CharacterComparator cc, int count) {
+
+        for (int i = 0; i < count; i++) {
+            char head = a.removeFirst();
+            char tail = b.removeFirst();
+            if ( ! cc.equalChars(head, tail)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
