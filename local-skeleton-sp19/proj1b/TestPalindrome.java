@@ -38,6 +38,16 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("aaa",offByOne));
         assertTrue(palindrome.isPalindrome("flake",offByOne));
     }
+    @Test
+    public void testIsPalindromeByOffN(){
+        CharacterComparator offBy5 = new OffByN(5);
+        assertTrue(palindrome.isPalindrome("a",offBy5));
+        assertTrue(palindrome.isPalindrome("",offBy5));
+        assertTrue(palindrome.isPalindrome("af",offBy5));
+        assertFalse(palindrome.isPalindrome("aa",offBy5));
+        assertFalse(palindrome.isPalindrome("afa",offBy5));
+        assertFalse(palindrome.isPalindrome("ab",offBy5));
+    }
 
 
     @Test
