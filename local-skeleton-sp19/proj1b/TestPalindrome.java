@@ -17,7 +17,12 @@ public class TestPalindrome {
     }
     @Test
     public void testIsPalindrome(){
-
+        assertFalse(palindrome.isPalindrome("cat"));
+        assertFalse(palindrome.isPalindrome("persiflage"));
+        assertFalse(palindrome.isPalindrome("Aa"));
+        assertTrue(palindrome.isPalindrome("a"));
+        assertTrue(palindrome.isPalindrome(""));
+        assertTrue(palindrome.isPalindrome("aaa"));
     }
     @Test
     public void testReverse(){

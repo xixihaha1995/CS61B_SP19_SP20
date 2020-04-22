@@ -27,16 +27,7 @@ public class Palindrome {
             }
         }
         return true;
-//
-//        for (int i = 0; i < b.size(); i++) {
-//            B += b.removeFirst();
-//        }
-//
-//        if (A == B){
-//            return true;
-//        }else {
-//            return false;
-//        }
+
     }
     public Deque<Character> reverse(String word){
         Deque<Character> deque = new ArrayDeque<>();
