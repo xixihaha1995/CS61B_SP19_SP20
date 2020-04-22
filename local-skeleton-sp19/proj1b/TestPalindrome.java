@@ -39,6 +39,7 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome("flake",offByOne));
     }
 
+
     @Test
     public void testReverse(){
         Deque d = palindrome.reverse("cat");
