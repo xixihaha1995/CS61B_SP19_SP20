@@ -13,17 +13,20 @@ public class TestArrayDequeGold {
                 sad1.addLast(i);
                 ads1.addLast(i);
             } else {
-                sad1.addFirst(i);
-                ads1.addFirst(i);
+                if ( sad1.size() > 0 && ads1.size() > 0 ) {
+                    sad1.removeFirst();
+                    ads1.removeFirst();
+                }
+
             }
         }
         for (int i = 0; i < 10; i += 1) {
             double numberBetweenZeroAndOne = StdRandom.uniform();
 
             if (numberBetweenZeroAndOne < 0.5) {
-                assertEquals(ads1.get(i), sad1.get(i));
+                assertEquals("random",ads1.get(i), sad1.get(i));
             } else {
-                assertEquals(ads1.get(i), sad1.get(i));
+                assertEquals("random",ads1.get(i), sad1.get(i));
             }
         }
 
