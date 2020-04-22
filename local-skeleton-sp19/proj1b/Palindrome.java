@@ -23,7 +23,15 @@ public class Palindrome {
         if (wordToDeque(word).size() < 2) {
             return true;
         } else {
-            return false;
+            if (word.length() % 2 != 0){
+                // TODO odd size word
+
+                cc.equalChars(head, tail);
+            } else {
+                //TODO even size word
+                return false;
+            }
+
         }
     }
 
