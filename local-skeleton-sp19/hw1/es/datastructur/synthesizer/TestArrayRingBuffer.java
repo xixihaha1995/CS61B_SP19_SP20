@@ -16,9 +16,12 @@ public class TestArrayRingBuffer {
         x.enqueue(62.3) ;// 33.1 44.8 62.3  null
         x.enqueue(-3.4) ;// 33.1 44.8 62.3 -3.4
         Double front  = x.dequeue();     // 44.8 62.3 -3.4  null (returns 33.1)
-        assertEquals(java.util.Optional.of(33.1), front);
-        assertEquals(java.util.Optional.of(44.8), x.peek());
-        assertEquals(java.util.Optional.of(44.8), x.dequeue());
+        Double exp = 33.1;
+        Double exp2 = 44.8;
+        assertEquals(exp, front);
+
+        assertEquals(exp, x.peek());
+        assertEquals(exp, x.dequeue());
         assertFalse(x.isEmpty());
 
     }
