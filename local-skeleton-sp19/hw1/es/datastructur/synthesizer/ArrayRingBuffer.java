@@ -14,6 +14,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
     private int fillCount;
     /* Array for storing the buffer data. */
     private T[] rb;
+
     private int bufferCapacity;
 
     public T[] items;
@@ -24,7 +25,8 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
     public ArrayRingBuffer(int capacity) {
         // TODO: Create new array with capacity elements.
         //       first, last, and fillCount should all be set to 0.
-        items = (T []) new Object[capacity];
+        bufferCapacity = capacity;
+        rb = (T []) new Object[capacity];
         first = 0;
         last  = 0;
         fillCount = 0;
@@ -46,7 +48,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         if ( isFull() ) {
             throw new RuntimeException("This ARB is full");
         }
-        items[last] = x;
+        rb[ circular(last) ] = x;
         fillCount += 1;
         last += 1;
     }
@@ -62,11 +64,11 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
             throw new RuntimeException("Ring buffer underflow");
         } else {
             int p = first;
-            T sto = items[first];
+            T sto = rb[circular(first)];
             for (int i = 0; i < fillCount - 1; i++) {
-                items[p] = items[p++];
+                rb[ circular(p) ] = rb[ circular(p++) ];
             }
-            items[p] = null;
+            rb[ circular(p) ] = null;
             last -= 1;
             fillCount -= 1;
 
@@ -83,7 +85,14 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
     public T peek() {
         // TODO: Return the first item. None of your instance variables should
         //       change.
-        return items[first];
+        return rb[ circular(first) ];
+    }
+    private int circular (int i) {
+        if ( i >= bufferCapacity ) {
+            return i - bufferCapacity;
+        } else {
+            return i;
+        }
     }
 
     // TODO: When you get to part 4, implement the needed code to support
