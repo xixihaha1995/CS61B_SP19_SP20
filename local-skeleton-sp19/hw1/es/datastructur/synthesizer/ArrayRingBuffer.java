@@ -21,10 +21,10 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
     /**
      * Create a new ArrayRingBuffer with the given capacity.
      */
-    public ArrayRingBuffer(int x) {
+    public ArrayRingBuffer(int capacity) {
         // TODO: Create new array with capacity elements.
         //       first, last, and fillCount should all be set to 0.
-        items = (T []) new Object[x];
+        items = (T []) new Object[capacity];
         first = 0;
         last  = 0;
         fillCount = 0;
@@ -43,6 +43,9 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
     public void enqueue(T x) {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update
         //       last.
+        if ( isFull() ) {
+            throw new RuntimeException("This ARB is full");
+        }
         items[last] = x;
         fillCount += 1;
         last += 1;
