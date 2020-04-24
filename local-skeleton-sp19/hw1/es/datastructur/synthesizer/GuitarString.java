@@ -31,7 +31,7 @@ public class GuitarString {
         while ( ! buffer.isEmpty()) {
             buffer.dequeue();
         }
-        while ( ! buffer.isEmpty() ) {
+        while ( ! buffer.isFull() ) {
             buffer.enqueue( Math.random() - 0.5);
         }
     }
@@ -46,6 +46,7 @@ public class GuitarString {
         double front = buffer.dequeue();
         double second = buffer.peek();
         double newdouble = DECAY * (front + second) /2;
+
         buffer.enqueue(newdouble);
     }
 

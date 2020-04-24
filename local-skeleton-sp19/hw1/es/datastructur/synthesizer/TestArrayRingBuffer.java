@@ -25,6 +25,8 @@ public class TestArrayRingBuffer {
         assertEquals(exp2, x.peek());
         assertEquals(exp2, x.dequeue());
         assertFalse(x.isEmpty());
+        Double exp3 = 62.3;
+        assertEquals(exp3, x.peek());
 
     }
 }

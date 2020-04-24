@@ -90,6 +90,9 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
     public T peek() {
         // TODO: Return the first item. None of your instance variables should
         //       change.
+        if ( isEmpty() ) {
+            throw new RuntimeException("Ring buffer underflow");
+        }
         return rb[ circular(first) ];
     }
     private int circular (int i) {
@@ -102,6 +105,9 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
             return i;
         }
     }
+//    private String toString() {
+//
+//    }
 
     // TODO: When you get to part 4, implement the needed code to support
     //       iteration and equals.
