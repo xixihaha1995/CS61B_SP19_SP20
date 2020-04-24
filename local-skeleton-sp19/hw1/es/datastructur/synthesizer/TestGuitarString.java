@@ -12,20 +12,18 @@ import static org.junit.Assert.*;
  */
 
 public class TestGuitarString {
-/*
     @Test
     public void testPluckTheAString() {
         double CONCERT_A = 440.0;
         GuitarString aString = new GuitarString(CONCERT_A);
         aString.pluck();
-        for (int i = 0; i < 50000; i += 1) {
+        for (int i = 0; i < 101; i += 1) {
             StdAudio.play(aString.sample());
             aString.tic();
         }
     }
-*/
 
-    @Test
+ /*   @Test
     public void testTic() {
         // Create a GuitarString of frequency 11025, which
         // is an ArrayRingBuffer of length 4.
@@ -52,5 +50,5 @@ public class TestGuitarString {
         // for assertEquals(double, double)
         assertEquals(expected, s5, 0.001);
 
-    }
+    }*/
 }

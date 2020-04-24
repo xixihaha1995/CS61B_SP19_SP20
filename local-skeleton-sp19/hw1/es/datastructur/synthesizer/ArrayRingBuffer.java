@@ -49,9 +49,9 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         if ( isFull() ) {
             throw new RuntimeException("This ARB is full");
         }
-        rb[ circular(last) ] = x;
+        rb[circular(last) ] = x;
         fillCount += 1;
-        last += 1;
+        last =circular(last +1);
     }
 
     /**
@@ -65,7 +65,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
             throw new RuntimeException("Ring buffer underflow");
         } else {
             T returnItem = rb[circular(first)];
-            first += 1;
+            first =circular(first +1);
             fillCount -= 1;
             return returnItem;
            /* int p = first;
@@ -96,12 +96,12 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         return rb[ circular(first) ];
     }
     private int circular (int i) {
-        if ( i >= bufferCapacity ) {
+        if ( i > bufferCapacity || i == bufferCapacity ) {
             return i - bufferCapacity;
         } else {
-            if ( i < 0 ) {
+/*            if ( i < 0 ) {
                 return  i + bufferCapacity;
-            }
+            }*/
             return i;
         }
     }
