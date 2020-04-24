@@ -9,6 +9,7 @@ public class GuitarHeroLite {
         /* create two guitar strings, for concert A and C */
         GuitarString stringA = new GuitarString(CONCERT_A);
         GuitarString stringC = new GuitarString(CONCERT_C);
+//        StdDraw.hasNextKeyTyped();
 
         while (true) {
 
@@ -21,6 +22,8 @@ public class GuitarHeroLite {
                     stringC.pluck();
                 }
             }
+//            stringA.pluck();
+//            stringC.pluck();
 
         /* compute the superposition of samples */
             double sample = stringA.sample() + stringC.sample();

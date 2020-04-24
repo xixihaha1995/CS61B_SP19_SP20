@@ -1,6 +1,4 @@
 package es.datastructur.synthesizer;
-import java.util.Iterator;
-
 //TODO: Make sure to that this class and all of its methods are public
 //TODO: Make sure to add the override tag for all overridden methods
 //TODO: Make sure to make this class implement BoundedQueue<T>
@@ -17,7 +15,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
 
     private int bufferCapacity;
 
-    public T[] items;
+
 
     /**
      * Create a new ArrayRingBuffer with the given capacity.
@@ -49,7 +47,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         if ( isFull() ) {
             throw new RuntimeException("This ARB is full");
         }
-        rb[circular(last) ] = x;
+        rb[last ] = x;
         fillCount += 1;
         last =circular(last +1);
     }
@@ -64,7 +62,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         if ( isEmpty() ) {
             throw new RuntimeException("Ring buffer underflow");
         } else {
-            T returnItem = rb[circular(first)];
+            T returnItem = rb[first];
             first =circular(first +1);
             fillCount -= 1;
             return returnItem;
@@ -93,7 +91,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         if ( isEmpty() ) {
             throw new RuntimeException("Ring buffer underflow");
         }
-        return rb[ circular(first) ];
+        return rb[ first ];
     }
     private int circular (int i) {
         if ( i > bufferCapacity || i == bufferCapacity ) {
