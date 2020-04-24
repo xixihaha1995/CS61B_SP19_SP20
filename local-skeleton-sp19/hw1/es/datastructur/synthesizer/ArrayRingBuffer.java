@@ -65,7 +65,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
             throw new RuntimeException("Ring buffer underflow");
         } else {
             T returnItem = rb[circular(first)];
-            first -= 1;
+            first += 1;
             fillCount -= 1;
             return returnItem;
            /* int p = first;
@@ -96,6 +96,9 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         if ( i >= bufferCapacity ) {
             return i - bufferCapacity;
         } else {
+            if ( i < 0 ) {
+                return  i + bufferCapacity;
+            }
             return i;
         }
     }
