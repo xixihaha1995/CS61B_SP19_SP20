@@ -64,17 +64,21 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         if ( isEmpty() ) {
             throw new RuntimeException("Ring buffer underflow");
         } else {
-            int p = first;
+            T returnItem = rb[circular(first)];
+            first -= 1;
+            fillCount -= 1;
+            return returnItem;
+           /* int p = first;
             T sto = rb[circular(first)];
             for (int i = 0; i < fillCount - 1; i++) {
                 rb[ circular(p) ] = rb[ circular(p++) ];
             }
             rb[ circular(p) ] = null;
-            last -= 1;
+            first -= 1;
             fillCount -= 1;
 
             return sto;
-
+*/
         }
 
     }
