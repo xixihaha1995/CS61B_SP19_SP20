@@ -3,6 +3,8 @@ package es.datastructur.synthesizer;
 //TODO: Make sure to add the override tag for all overridden methods
 //TODO: Make sure to make this class implement BoundedQueue<T>
 
+import java.util.Iterator;
+
 public class ArrayRingBuffer<T> implements BoundedQueue<T> {
     /* Index for the next dequeue or peek. */
     private int first;
@@ -45,7 +47,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update
         //       last.
         if ( isFull() ) {
-            throw new RuntimeException("This ARB is full");
+            throw new RuntimeException("Ring buffer overflow");
         }
         rb[last ] = x;
         fillCount += 1;
@@ -103,6 +105,24 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
             return i;
         }
     }
+
+    public Iterator<T> iterator() {
+        private int wizPos;
+        public iterator() { wizPos = 0; }
+        public boolean hasNext() { return wizPos < fillCount; }
+        public T next() {
+            T returnItem = rb[wizPos];
+            wizPos += 1;
+            return returnItem;
+        }
+    }
+
+
+
+//    public Iterator<T> ARBIterator<T>(){
+//        return Iterator<T>;
+//    }
+
 //    private String toString() {
 //
 //    }
