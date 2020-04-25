@@ -106,7 +106,7 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         }
     }
 
-    private Iterator<T> ARBiterator() {
+    private Iterator<T> ARBiterator() implements Iterator<T> {
         private int wizPos;
         public ARBiterator() { wizPos = 0; }
         public boolean hasNext() { return wizPos < fillCount; }

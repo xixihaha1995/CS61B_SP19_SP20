@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d905b5eb-c3b3-4e86-b7ca-658d041c3b17" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/UseARBB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/es/datastructur/synthesizer/ARBIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/ARBIterator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/es/datastructur/synthesizer/ArrayRingBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/ArrayRingBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/es/datastructur/synthesizer/BoundedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/BoundedQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/es/datastructur/synthesizer/UseARB.java" beforeDir="false" afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/UseARB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,14 +138,22 @@
       <option name="project" value="LOCAL" />
       <updated>1587773259702</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fuck it">
+      <created>1587775004998</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587775004998</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="how to synthesis" />
     <MESSAGE value="waiting for task 4" />
     <MESSAGE value="this one should be iterable: iterator, need interface for this, Total class should implement iterable" />
-    <option name="LAST_COMMIT_MESSAGE" value="this one should be iterable: iterator, need interface for this, Total class should implement iterable" />
+    <MESSAGE value="fuck it" />
+    <option name="LAST_COMMIT_MESSAGE" value="fuck it" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="143" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1587774660380">
@@ -161,10 +164,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="466" y="258" width="433" height="257" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1587774665463" />
-    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1587773258903">
+    <state x="239" y="0" key="CommitChangelistDialog2" timestamp="1587775004238">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587773258903" />
+    <state x="239" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587775004238" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1587774373989">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
