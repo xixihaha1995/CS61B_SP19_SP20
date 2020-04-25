@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d905b5eb-c3b3-4e86-b7ca-658d041c3b17" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/ARBIterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/Iterator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UseARBB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/es/datastructur/synthesizer/ARBIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/ARBIterator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/es/datastructur/synthesizer/ArrayRingBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/ArrayRingBuffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/es/datastructur/synthesizer/BoundedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/BoundedQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/es/datastructur/synthesizer/UseARB.java" beforeDir="false" afterPath="$PROJECT_DIR$/es/datastructur/synthesizer/UseARB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -49,9 +50,31 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.UseARBB">
     <configuration name="GuitarHeroLite" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GuitarHeroLite" />
+      <module name="hw1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UseARB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="es.datastructur.synthesizer.UseARB" />
+      <module name="hw1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="es.datastructur.synthesizer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UseARBB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UseARBB" />
       <module name="hw1" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -82,6 +105,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UseARBB" />
+        <item itemvalue="Application.UseARB" />
         <item itemvalue="Application.GuitarHeroLite" />
       </list>
     </recent_temporary>
@@ -111,35 +136,51 @@
       <option name="project" value="LOCAL" />
       <updated>1587769597515</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="this one should be iterable: iterator, need interface for this, Total class should implement iterable">
+      <created>1587773259702</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587773259702</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="how to synthesis" />
     <MESSAGE value="waiting for task 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="waiting for task 4" />
+    <MESSAGE value="this one should be iterable: iterator, need interface for this, Total class should implement iterable" />
+    <option name="LAST_COMMIT_MESSAGE" value="this one should be iterable: iterator, need interface for this, Total class should implement iterable" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1587769596649">
+    <state x="413" y="143" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1587774660380">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587769596649" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1587769424156">
+    <state x="413" y="143" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1587774660380" />
+    <state x="466" y="258" width="433" height="257" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587774665463">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587769424156" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1587769424156">
+    <state x="466" y="258" width="433" height="257" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1587774665463" />
+    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1587773258903">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587769424156" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1587769424156">
+    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587773258903" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1587774373989">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587769424156" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1587769424156">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587774373989" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1587774373989">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587769424156" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587774373989" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1587774373989">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587774373989" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1587774373989">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587774373989" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1587769125004">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

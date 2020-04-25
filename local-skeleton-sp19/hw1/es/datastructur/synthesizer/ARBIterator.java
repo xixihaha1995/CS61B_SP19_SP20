@@ -1,13 +1,15 @@
 package es.datastructur.synthesizer;
 
+import java.util.Iterator;
 
-public class ARBIterator<T> implements Iterator<T> {
+
+private java.util.Iterator<T> ARBiterator() implements Iterator<T>{
     private int wizPos;
-    public ARBIterator() { wizPos = 0; }
-    public boolean hasNext() { return wizPos < .size; }
+    public iterator() { wizPos = 0; }
+    public boolean hasNext() { return wizPos < fillCount; }
     public T next() {
         T returnItem = rb[wizPos];
         wizPos += 1;
-        return returnItem;
+        return (Iterator<T>) returnItem;
     }
 }

@@ -1,6 +1,4 @@
-package es.datastructur.synthesizer;
-
-public class UseARB {
+public class UseARBB {
     public static void main(String[] args) {
 //        ArrayRingBuffer<Integer> arb = new ArrayRingBuffer<>(5);
 //        arb.enqueue(5);

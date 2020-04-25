@@ -106,15 +106,28 @@ public class ArrayRingBuffer<T> implements BoundedQueue<T> {
         }
     }
 
-    public Iterator<T> iterator() {
+    private Iterator<T> ARBiterator() {
         private int wizPos;
-        public iterator() { wizPos = 0; }
+        public ARBiterator() { wizPos = 0; }
         public boolean hasNext() { return wizPos < fillCount; }
         public T next() {
             T returnItem = rb[wizPos];
             wizPos += 1;
-            return returnItem;
+            return (Iterator<T>) returnItem;
         }
+    }
+    @Override
+    public boolean equals(Object o) {
+        if ( o == null) { return false;}
+        if ( this.getClass() != o.getClass()) { return false;}
+        ArrayRingBuffer<T> other = ( ArrayRingBuffer<T>) o;
+        if ( this.fillCount() != other.fillCount() ) { return false;}
+/*        for ( T i : other) {
+            if ( true ) {
+                return false;
+            }
+        }*/
+        return true;
     }
 
 
