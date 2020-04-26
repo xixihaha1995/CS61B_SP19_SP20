@@ -7,6 +7,7 @@ public class Percolation {
     public boolean[] markedFull;
     public int[] parent;
     private int[] size;
+    private int[] surSize;
 
     private int numberOfGrid;
     public Percolation(int N)                // create N-by-N grid, with all sites initially blocked
@@ -22,6 +23,7 @@ public class Percolation {
             markedOpen[i] = false;
             markedFull[i] = false;
             size[i] = 1;
+            surSize[i] = 0;
         }
     }
 
@@ -36,22 +38,32 @@ public class Percolation {
             markedOpen[xyTo1D(row, col)] = true;
             open += 1;
             //TODO search for the surrounding to see if there are open sites
-
-            if (isOpen(rowTa, colTa)) {
-                union(xyTo1D(row,col),xyTo1D(rowTa, colTa));
-                if (connected(current, top)) {
-                    markedFull[current] = true;
-                }
-            }
+            surrounding(row, col);
+        }
+    }
+    private void surrounding(int curRow, int curCol) {
+        valiSur(curRow, curCol, curRow - 1, curCol);
+        valiSur(curRow, curCol, curRow + 1, curCol);
+        valiSur(curRow, curCol, curRow , curCol - 1);
+        valiSur(curRow, curCol, curRow, curCol + 1);
+    }
+    private void valiSur(int curRow, int curCol, int rowTa, int colTa) {
+    if (validNoException(rowTa,colTa) ]) {
+        if ( markedOpen[xyTo1D(rowTa, colTa)) {
+            union(xyTo1D(curRow,curCol),xyTo1D(rowTa, colTa));
+        }
+    }
+    }
+    private boolean validNoException(int row, int col) {
+        if ( row < 0 || row > numberOfGrid || col < 0 || col > numberOfGrid) {
+            return false;
+        } else {
+            return true;
         }
 
-
     }
-    private int[] surrounding(int curRow, int curCol) {
-    int[]
 
-    }
-    private boolean valiSur(int row, int )
+
     public boolean isOpen(int row, int col)  // is the site (row, col) open?
     {
         return markedOpen[xyTo1D(row, col)];
@@ -94,7 +106,7 @@ public class Percolation {
 
     private int xyTo1D(int row, int col){
         validate(row, col);
-        return row * col - 1;
+        return row * numberOfGrid + col;
     }
     private void validate ( int row, int col) {
         if ( row < 0 || row > numberOfGrid ) {
