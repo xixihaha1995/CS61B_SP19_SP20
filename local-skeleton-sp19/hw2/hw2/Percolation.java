@@ -1,36 +1,64 @@
 package hw2;
 
-import edu.princeton.cs.algs4.WeightedQuickUnionUF;
-
 public class Percolation {
 //    public int[] block;
     public int open;
     public boolean[] markedOpen;
     public boolean[] markedFull;
-    public int[] id;
+    public int[] parent;
+    private int[] size;
 
     private int numberOfGrid;
     public Percolation(int N)                // create N-by-N grid, with all sites initially blocked
     {
-        id = new int[ N * N ];
+        int cap = N * N;
         numberOfGrid = N;
+        open = 0;
+        parent = new int[ cap ];
+        size = new int[cap];
+        markedFull = new boolean[cap];
+        markedOpen = new boolean[cap];
+        for (int i = 0; i < cap; i++) {
+            markedOpen[i] = false;
+            markedFull[i] = false;
+            size[i] = 1;
+        }
+    }
+
 //        for (boolean b : markedFull[0]) {
 //            markedFull[0][b] = true;
 //        }
     }
-    public void open(int row, int col)       // open the site (row, col) if it is not open already
+    public int open(int row, int col)       // open the site (row, col) if it is not open already
     {
         validate(row, col);
+        if ( ! isOpen( row, col )) {
+            markedOpen[xyTo1D(row, col)] = true;
+            open += 1;
+            //TODO search for the surrounding to see if there are open sites
 
-        markedOpen[row][col] = true;
+            if (isOpen(rowTa, colTa)) {
+                union(xyTo1D(row,col),xyTo1D(rowTa, colTa));
+                if (connected(current, top)) {
+                    markedFull[current] = true;
+                }
+            }
+        }
+
+
     }
+    private int[] surrounding(int curRow, int curCol) {
+    int[]
+
+    }
+    private boolean valiSur(int row, int )
     public boolean isOpen(int row, int col)  // is the site (row, col) open?
     {
-        return markedOpen[row][col];
+        return markedOpen[xyTo1D(row, col)];
     }
     public boolean isFull(int row, int col)  // is the site (row, col) full?
     {
-        return markedFull[row][col];
+        return markedFull[xyTo1D(row, col)] ;
     }
     public int numberOfOpenSites()           // number of open sites
     {
@@ -47,8 +75,25 @@ public class Percolation {
     }
         return false;
     }
+    public void union(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        if (rootP == rootQ) return;
 
-    private int xyTo1D(int row, int col) {
+        // make smaller root point to larger one
+        if (size[rootP] < size[rootQ]) {
+            parent[rootP] = rootQ;
+            size[rootQ] += size[rootP];
+        }
+        else {
+            parent[rootQ] = rootP;
+            size[rootP] += size[rootQ];
+        }
+
+    }
+
+    private int xyTo1D(int row, int col){
+        validate(row, col);
         return row * col - 1;
     }
     private void validate ( int row, int col) {
@@ -58,6 +103,15 @@ public class Percolation {
         if ( col < 0 || col > numberOfGrid ) {
             throw new RuntimeException("Non-Valid Col Index");
         }
+    }
+    public int find(int p){
+        validate(p);
+        while (p != parent[p])
+            p = parent[p];
+        return p;
+    }
+    public boolean connected(int p, int q) {
+        return find(p) == find(q);
     }
 
     public static void main(String[] args)   // use for unit testing (not required, but keep this here for the autograder)
