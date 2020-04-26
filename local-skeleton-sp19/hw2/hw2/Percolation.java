@@ -23,6 +23,7 @@ public class Percolation {
             markedOpen[i] = false;
             markedFull[i] = false;
             size[i] = 1;
+            parent[i] = i;
 //            surSize[i] = 0;
         }
     }
