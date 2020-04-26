@@ -9,7 +9,7 @@ public class PercolationStats {
     public int grid;
     public int time;
     public PercolationStats(int N, int T, PercolationFactory pf){
-        double[] fraction = new double[T];
+        fraction = new double[T];
         time = T;
         grid = N;
         for (int i = 0; i < T; i++) {
@@ -21,10 +21,10 @@ public class PercolationStats {
 
         }
     }   // perform T independent experiments on an N-by-N grid
-    public double mean()        {
+    public double mean() {
         meanCur = 0.0;
         for(int i = 0; i < time; i++) {
-            meanCur += fraction[i];
+            meanCur = meanCur + fraction[i];
         }
         return meanCur/time;
     }                                   // sample mean of percolation threshold
@@ -35,7 +35,7 @@ public class PercolationStats {
     public static void main(String[] args) {
         PercolationFactory pf = new PercolationFactory();
         PercolationStats ps = new PercolationStats(20,30,pf);
-        double mean = ps.mean();
-        System.out.println(mean);
+//        double mean = ps.mean();
+        System.out.println(ps.mean());
  }
 }
