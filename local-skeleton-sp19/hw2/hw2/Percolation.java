@@ -51,6 +51,7 @@ public class Percolation {
     if (validNoException(rowTa,colTa) ]) {
         if ( markedOpen[xyTo1D(rowTa, colTa)) {
             union(xyTo1D(curRow,curCol),xyTo1D(rowTa, colTa));
+            //TODO should I check full for every open sites?
         }
     }
     }
@@ -71,7 +72,7 @@ public class Percolation {
     public boolean isFull(int row, int col)  // is the site (row, col) full?
     {
         for (int i = 0; i < numberOfGrid; i++) {
-            if( find(xyTo1D(row,col))== find(0,i)) {
+            if( find(xyTo1D(row,col))== find(xyTo1D(0,i))) {
                 markedFull[xyTo1D(row, col)] = true;
                 return true;
             }
@@ -123,7 +124,7 @@ public class Percolation {
         }
     }
     private int find(int p){
-        validate(p);
+        validate(xyTo1D());
         while (p != parent[p]) {
             parent[p] = parent[parent[p]];
             p = parent[p];
