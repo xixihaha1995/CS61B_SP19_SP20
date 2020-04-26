@@ -70,7 +70,14 @@ public class Percolation {
     }
     public boolean isFull(int row, int col)  // is the site (row, col) full?
     {
-        return markedFull[xyTo1D(row, col)] ;
+        for (int i = 0; i < numberOfGrid; i++) {
+            if( find(xyTo1D(row,col))== find(0,i)) {
+                markedFull[xyTo1D(row, col)] = true;
+                return true;
+            }
+        }
+        return false;
+
     }
     public int numberOfOpenSites()           // number of open sites
     {
@@ -78,15 +85,14 @@ public class Percolation {
     }
     public boolean percolates()              // does the system percolate?
     {
-        for ( boolean i: markedFull[numberOfGrid-1])
-        {
-            if ( markedFull[numberOfGrid-1][i])
-            {
+        for (int i = 0; i < numberOfGrid; i++) {
+            if( isFull(numberOfGrid - 1, i)) {
                 return true;
             }
-    }
+        }
         return false;
     }
+
     public void union(int p, int q) {
         int rootP = find(p);
         int rootQ = find(q);
@@ -116,10 +122,12 @@ public class Percolation {
             throw new RuntimeException("Non-Valid Col Index");
         }
     }
-    public int find(int p){
+    private int find(int p){
         validate(p);
-        while (p != parent[p])
+        while (p != parent[p]) {
+            parent[p] = parent[parent[p]];
             p = parent[p];
+        }
         return p;
     }
     public boolean connected(int p, int q) {
