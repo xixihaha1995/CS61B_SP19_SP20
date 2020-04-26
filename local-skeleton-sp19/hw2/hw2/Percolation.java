@@ -71,12 +71,15 @@ public class Percolation {
     }
     public boolean isFull(int row, int col)  // is the site (row, col) full?
     {
-        for (int i = 0; i < numberOfGrid; i++) {
-            if (find(xyTo1D(row, col)) == find(xyTo1D(0, i))) {
-                markedFull[xyTo1D(row, col)] = true;
-                return true;
+        if (isOpen(row,col)) {
+            for (int i = 0; i < numberOfGrid; i++) {
+                if (find(xyTo1D(row, col)) == find(xyTo1D(0, i))) {
+                    markedFull[xyTo1D(row, col)] = true;
+                    return true;
+                }
             }
         }
+
         return false;
 
     }
