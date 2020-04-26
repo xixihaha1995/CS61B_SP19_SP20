@@ -41,12 +41,13 @@ public class PercolationStats {
         double[] time = new double[timeNum];
         double[] mean = new double[timeNum];
         for(int i=0;i<timeNum;i++){
-            PercolationStats ps = new PercolationStats(20,30*(i+1),pf);
+            PercolationStats ps = new PercolationStats(20*(i+1),30,pf);
             mean[i] = ps.mean();
             time[i] = timer1.elapsedTime();
         }
         for(int i=0; i<timeNum;i++){
-            System.out.println("%.2f (%.2f seconds)", mean[i], time[i]);
+            System.out.println( mean[i]);
+            System.out.println( time[i]);
         }
 
 
