@@ -1,6 +1,8 @@
 package hw2;
 
+import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.Stopwatch;
 
 public class PercolationStats {
 
@@ -33,9 +35,21 @@ public class PercolationStats {
     public double confidenceHigh()                                 // high endpoint of 95% confidence interval
     */
     public static void main(String[] args) {
+        Stopwatch timer1 = new Stopwatch();
         PercolationFactory pf = new PercolationFactory();
-        PercolationStats ps = new PercolationStats(20,30,pf);
-//        double mean = ps.mean();
-        System.out.println(ps.mean());
- }
+        int timeNum = 5;
+        double[] time = new double[timeNum];
+        double[] mean = new double[timeNum];
+        for(int i=0;i<timeNum;i++){
+            PercolationStats ps = new PercolationStats(20,30*(i+1),pf);
+            mean[i] = ps.mean();
+            time[i] = timer1.elapsedTime();
+        }
+        for(int i=0; i<timeNum;i++){
+            System.out.println("%.2f (%.2f seconds)", mean[i], time[i]);
+        }
+
+
+
+    }
 }
