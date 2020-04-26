@@ -2,7 +2,7 @@ package hw2;
 
 public class Percolation {
 //    public int[] block;
-    public int open;
+    public int openNum;
     public boolean[] markedOpen;
     public boolean[] markedFull;
     public int[] parent;
@@ -14,7 +14,7 @@ public class Percolation {
     {
         int cap = N * N;
         numberOfGrid = N;
-        open = 0;
+        openNum = 0;
         parent = new int[ cap ];
         size = new int[cap];
         markedFull = new boolean[cap];
@@ -31,16 +31,15 @@ public class Percolation {
 //            markedFull[0][b] = true;
 //        }
     }
-    public int open(int row, int col)       // open the site (row, col) if it is not open already
-    {
+    public void open(int row, int col) {
         validate(row, col);
-        if ( ! isOpen( row, col )) {
+        if( !isOpen( row, col )) {
             markedOpen[xyTo1D(row, col)] = true;
-            open += 1;
-            //TODO search for the surrounding to see if there are open sites
+            openNum += 1;
             surrounding(row, col);
         }
-    }
+    }      // open the site (row, col) if it is not open already
+
     private void surrounding(int curRow, int curCol) {
         valiSur(curRow, curCol, curRow - 1, curCol);
         valiSur(curRow, curCol, curRow + 1, curCol);
@@ -82,7 +81,7 @@ public class Percolation {
     }
     public int numberOfOpenSites()           // number of open sites
     {
-        return open;
+        return openNum;
     }
     public boolean percolates()              // does the system percolate?
     {
