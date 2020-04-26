@@ -22,9 +22,9 @@ public class PercolationStats {
         }
     }   // perform T independent experiments on an N-by-N grid
     public double mean()        {
-        meanCur = 0;
-        for(double i: fraction) {
-            meanCur += i;
+        meanCur = 0.0;
+        for(int i = 0; i < time; i++) {
+            meanCur += fraction[i];
         }
         return meanCur/time;
     }                                   // sample mean of percolation threshold

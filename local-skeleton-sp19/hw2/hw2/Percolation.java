@@ -7,7 +7,7 @@ public class Percolation {
     public boolean[] markedFull;
     public int[] parent;
     private int[] size;
-    private int[] surSize;
+//    private int[] surSize;
 
     private int numberOfGrid;
     public Percolation(int N)                // create N-by-N grid, with all sites initially blocked
@@ -23,14 +23,14 @@ public class Percolation {
             markedOpen[i] = false;
             markedFull[i] = false;
             size[i] = 1;
-            surSize[i] = 0;
+//            surSize[i] = 0;
         }
     }
 
 //        for (boolean b : markedFull[0]) {
 //            markedFull[0][b] = true;
 //        }
-    }
+
     public void open(int row, int col) {
         validate(row, col);
         if( !isOpen( row, col )) {
@@ -47,15 +47,15 @@ public class Percolation {
         valiSur(curRow, curCol, curRow, curCol + 1);
     }
     private void valiSur(int curRow, int curCol, int rowTa, int colTa) {
-    if (validNoException(rowTa,colTa) ]) {
-        if ( markedOpen[xyTo1D(rowTa, colTa)) {
+    if (validNoException(rowTa,colTa) ) {
+        if ( markedOpen[xyTo1D(rowTa, colTa)]) {
             union(xyTo1D(curRow,curCol),xyTo1D(rowTa, colTa));
             //TODO should I check full for every open sites?
         }
     }
     }
     private boolean validNoException(int row, int col) {
-        if ( row < 0 || row > numberOfGrid || col < 0 || col > numberOfGrid) {
+        if ( row < 0 || row >= numberOfGrid || col < 0 || col >= numberOfGrid) {
             return false;
         } else {
             return true;
@@ -139,5 +139,5 @@ public class Percolation {
         return find(p) == find(q);
     }*/
 
-    public static void main(String[] args)   // use for unit testing (not required, but keep this here for the autograder)
+    public static void main(String[] args){}   // use for unit testing (not required, but keep this here for the autograder)
 }
