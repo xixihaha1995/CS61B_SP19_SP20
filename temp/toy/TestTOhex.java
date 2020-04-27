@@ -4,7 +4,8 @@ public class TestTOhex {
     @Test
     public void testToHex() {
 
-        assertEquals(0, convertToHex.toHex(0));
+        assertEquals("ffffffff", convertToHex.toHex(-1));
+        assertEquals("1a", convertToHex.toHex(26));
 
 /*        toHex th2= new toHex(-1);
         assertEquals("ffffffff", th2);
