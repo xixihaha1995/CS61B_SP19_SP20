@@ -13,12 +13,16 @@ public class reverselist {
         ListNode next;
         ListNode(int x){
             val =x;
+            next = null;
         }
     }
+    public ListNode curr;
+    public ListNode nextpoi;
+    public ListNode prev;
     public ListNode reverseList(ListNode head) {
-        ListNode curr = new ListNode();
-        ListNode nextpoi = new ListNode();
-        ListNode prev = new ListNode();
+        curr = new ListNode(5);
+        nextpoi = new ListNode(5);
+        prev = new ListNode(5);
         curr = head;
 //<<<<<<< HEAD
         prev = null;
