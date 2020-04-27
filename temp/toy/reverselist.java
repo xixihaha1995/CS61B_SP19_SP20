@@ -7,17 +7,24 @@
  *     ListNode(int x) { val = x; }
  * }
  */
-class Solution {
+public class reverselist {
+    private class ListNode{
+        int val;
+        ListNode next;
+        ListNode(int x){
+            val =x;
+        }
+    }
     public ListNode reverseList(ListNode head) {
         ListNode curr = new ListNode();
         ListNode nextpoi = new ListNode();
         ListNode prev = new ListNode();
         curr = head;
-<<<<<<< HEAD
+//<<<<<<< HEAD
         prev = null;
-=======
+//=======
         
->>>>>>> origin/master
+//>>>>>>> origin/master
         while(curr != null) {
             nextpoi=curr.next;
             curr.next=prev;

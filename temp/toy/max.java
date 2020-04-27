@@ -1,5 +1,5 @@
   
-public class ClassNameHere {
+public class max {
    public static int max(int[] m) {
       int maxIndex = 0;
       int l = m.length;

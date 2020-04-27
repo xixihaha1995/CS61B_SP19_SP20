@@ -1,4 +1,5 @@
-        public static boolean isValid(String s) {
+public class isValid{
+    public static boolean isValid(String s) {
         if (s==null){
             return true;
         }
@@ -22,21 +23,21 @@
             }
 
             if(s.charAt(i)=='('){
-                 
-               right = ')';
-               left = '(';
+
+                right = ')';
+                left = '(';
             }
             else if(s.charAt(i)=='['){
-                 left='[';
-                 right=']';
-            }                    
-            else if(s.charAt(i)=='{'){
-                 left='{';
-                 right='}';
+                left='[';
+                right=']';
             }
-           for(int j=i+1;j<l;j++) {
-              
-              
+            else if(s.charAt(i)=='{'){
+                left='{';
+                right='}';
+            }
+            for(int j=i+1;j<l;j++) {
+
+
                 if(s.charAt(j)==right) {
                     returnbool = true;
                     break;
@@ -50,3 +51,4 @@
         return returnbool;
 
     }
+}

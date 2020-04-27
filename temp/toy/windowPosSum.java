@@ -1,4 +1,4 @@
-public class BreakContinue {
+class windowsPosSum{
   public static void windowPosSum(int[] a, int n) {
     int l = a.length;
     for(int i = 0; i < l; i += 1){
