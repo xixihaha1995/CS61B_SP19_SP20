@@ -4,7 +4,7 @@ public class TestTOhex {
     @Test
     public void testToHex() {
 
-        assertEquals(0, toHexSolution.toHex(0));
+        assertEquals(0, convertToHex.toHex(0));
 
 /*        toHex th2= new toHex(-1);
         assertEquals("ffffffff", th2);
