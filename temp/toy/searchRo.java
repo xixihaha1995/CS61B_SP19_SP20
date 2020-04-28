@@ -56,5 +56,6 @@ public class searchRo {
     }
     private int circular(int pivot, int size){
         //TODO map should decrease the space size
+        return 1;
     }
 }
