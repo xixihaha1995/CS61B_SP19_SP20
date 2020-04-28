@@ -12,10 +12,14 @@ public class searchRo {
         //TODO Search for pivot
         int pivot = 0;
         for(int i=0;i<nums.length;i++){
+            if(i==nums.length-1){
+                break;
+            }
             if(nums[i]>nums[i+1]){
                 pivot = i+1;
                 break;
             }
+
         }
         //TODO rearrange
         int[] newNums = new int[nums.length];
@@ -23,7 +27,7 @@ public class searchRo {
         System.arraycopy(nums,0,newNums,nums.length-pivot,pivot);
         //TODO binary search;
         int left  = 0;
-        int right = nums.length;
+        int right = nums.length-1;
         return internal(left,right,newNums,target);
 
     }
