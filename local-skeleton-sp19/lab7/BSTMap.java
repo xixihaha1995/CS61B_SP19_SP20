@@ -1,4 +1,5 @@
 import java.util.Iterator;
+//import java.util.Queue;
 import java.util.Set;
 
 
@@ -62,9 +63,59 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
 
     @Override
     public void put(K key, V value) {
+        if(key == null) throw new IllegalArgumentException("calls put() with a null key");
+        biSeTr = put(biSeTr,key, value);
 
     }
+    private BST put(BST x, K key, V val){
+        if (x == null) return new BST(key, val, 1);
+        int cmp = key.compareTo(x.key);
+        //TODO understand how put() works
+        if ( cmp < 0 ) {
+            x.left = put(x.left, key, val);
+        } else if ( cmp > 0 ) {
+            x.right = put(x.right, key, val);
+        } else x.value = val;
+        x.size = 1 + size(x.left) + size(x.right);
+        return x;
+
+    }
+    public Iterable<K> keys(){
+//        if (isEmpty()) return new Queue<Key>();
+        return keys(min(), max());
+    }
+    public Iterable<K> keys(K lo, K hi) {
+        Queue<K> queue = new Queue<K>();
+        keys(biSeTr,queue, lo, hi);
+        return queue;
+    }
+    private void keys(BST x, Queue<K> queue, K lo, K hi) {
+        if (x == null) return;
+        int cmplo = lo.compareTo(x.key);
+        int cmphi = hi.compareTo(x.key);
+        if (cmplo < 0) keys(x.left, queue, lo, hi);
+        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
+        if (cmphi > 0) keys(x.right, queue, lo, hi);
+    }
+    public K min(){
+        return min(biSeTr).key;
+    }
+    private BST min(BST x){
+        if (x.left == null) return x;
+        else return min(x.left);
+    }
+    public K max(){
+        return max(biSeTr).key;
+    }
+    private BST max(BST x){
+        if (x.right == null) return x;
+        else return min(x.right);
+    }
+
     public void printInOrder(){
+        for (K s: keys()){
+            StdOut.println(s + " " + get(s));
+        }
 
     }
     @Override
@@ -106,6 +157,13 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
     public int compareTo(K k) extends Comparable<K> {
         return 0;
     }*/
+public static void main(String[] args) {
+    BSTMap<String, Integer> b = new BSTMap<String, Integer>();
+    b.get("starChild");
+    b.put("starChild", 5);
+    b.put("KISS", 5);
+    b.printInOrder();
+}
 
 
 }
