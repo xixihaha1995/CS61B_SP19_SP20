@@ -5,16 +5,15 @@ import java.util.Set;
 
 public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
     private class BST{
-        public BST left;
-        public BST right;
-        public K key;
+        private BST left, right;
+        private K key;
         private V value;
+        private int size;
 
-        public  BST(K i, V val,BST l, BST r){
-            left = l;
-            right = r;
+        public  BST(K i, V val,int size){
             key = i;
             value = val;
+            this.size = size;
         }
     }
 
@@ -46,12 +45,19 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
     }
     @Override
     public int size() {
-        return numbers;
+        return size(biSeTr);
+    }
+    private int size(BST bst){
+        if (bst == null) return 0;
+        else return bst.size;
     }
 
     @Override
     public boolean containsKey(K key) {
-        return false;
+        if ( key == null) {
+            throw new IllegalArgumentException("argument to contains() is null");
+        }
+        return get(key) != null;
     }
 
     @Override
