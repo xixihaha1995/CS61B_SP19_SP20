@@ -1,25 +1,52 @@
 import java.util.Iterator;
 import java.util.Set;
 
-public class BSTMap<K,V> implements Map61B<K, V>, Comparable<K> {
+
+
+public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
     private static class BST{
         public BST left;
         public BST right;
-        public K item;
+        public K key;
+        private V value
 
-        public  BST(K i, BST l, BST r){
+        public  BST(K i, V val,BST l, BST r){
             left = l;
             right = r;
-            item = i;
+            key = i;
+            value = val;
         }
     }
+
     private BST biSeTr;
     public int numbers;
+
+    public BSTMap(){
+    }
 
 
     @Override
     public void clear() {
+        numbers = 0;
+        biSeTr = null;
 
+    }
+    @Override
+    public V get(K key) {
+        return get(biSeTr,key);
+    }
+    private V get(BST x, K key){
+        if (key == null) throw new IllegalArgumentException("calls get() with a null key");
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if      (cmp < 0) return get(x.left, key);
+        else if (cmp > 0) return get(x.right, key);
+        else              return x.value;
+
+    }
+    @Override
+    public int size() {
+        return numbers;
     }
 
     @Override
@@ -28,21 +55,30 @@ public class BSTMap<K,V> implements Map61B<K, V>, Comparable<K> {
     }
 
     @Override
-    public V get(K key) {
-        return null;
-    }
-
-    @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
     public void put(K key, V value) {
 
     }
+    @Override
+    public V remove(K key) {
+        throw new UnsupportedOperationException();
+    }
 
     @Override
+    public V remove(K key, V value) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Set<K> keySet() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Iterator<K> iterator() {
+        throw new UnsupportedOperationException();
+    }
+
+/*    @Override
     public Set<K> keySet() {
         return null;
     }
@@ -55,15 +91,12 @@ public class BSTMap<K,V> implements Map61B<K, V>, Comparable<K> {
     @Override
     public V remove(K key, V value) {
         return null;
-    }
+    }*/
 
-    @Override
-    public int compareTo(K k) {
+/*    @Override
+    public int compareTo(K k) extends Comparable<K> {
         return 0;
-    }
+    }*/
 
-    @Override
-    public Iterator<K> iterator() {
-        return null;
-    }
+
 }
