@@ -4,11 +4,11 @@ import java.util.Set;
 
 
 public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
-    private static class BST{
+    private class BST{
         public BST left;
         public BST right;
         public K key;
-        private V value
+        private V value;
 
         public  BST(K i, V val,BST l, BST r){
             left = l;
@@ -56,6 +56,9 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
 
     @Override
     public void put(K key, V value) {
+
+    }
+    public void printInOrder(){
 
     }
     @Override
