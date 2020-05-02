@@ -99,7 +99,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
     }
     private BST max(BST x){
         if (x.right == null) return x;
-        else return min(x.right);
+        else return max(x.right);
     }
 
     public Iterable<K> keys(K lo, K hi) {
