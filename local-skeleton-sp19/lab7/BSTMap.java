@@ -71,31 +71,21 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
         if (x == null) return new BST(key, val, 1);
         int cmp = key.compareTo(x.key);
         //TODO understand how put() works
-        if ( cmp < 0 ) {
+        if ( cmp < 0 )
             x.left = put(x.left, key, val);
-        } else if ( cmp > 0 ) {
+         else if ( cmp > 0 )
             x.right = put(x.right, key, val);
-        } else x.value = val;
+         else x.value = val;
         x.size = 1 + size(x.left) + size(x.right);
         return x;
 
     }
+    public boolean isEmpty() {
+        return size() == 0;
+    }
     public Iterable<K> keys(){
-//        if (isEmpty()) return new Queue<Key>();
+        if (isEmpty()) return new Queue<K>();
         return keys(min(), max());
-    }
-    public Iterable<K> keys(K lo, K hi) {
-        Queue<K> queue = new Queue<K>();
-        keys(biSeTr,queue, lo, hi);
-        return queue;
-    }
-    private void keys(BST x, Queue<K> queue, K lo, K hi) {
-        if (x == null) return;
-        int cmplo = lo.compareTo(x.key);
-        int cmphi = hi.compareTo(x.key);
-        if (cmplo < 0) keys(x.left, queue, lo, hi);
-        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
-        if (cmphi > 0) keys(x.right, queue, lo, hi);
     }
     public K min(){
         return min(biSeTr).key;
@@ -111,6 +101,22 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
         if (x.right == null) return x;
         else return min(x.right);
     }
+
+    public Iterable<K> keys(K lo, K hi) {
+        Queue<K> queue = new Queue<K>();
+        keys(biSeTr,queue, lo, hi);
+        return queue;
+    }
+    private void keys(BST x, Queue<K> queue, K lo, K hi) {
+        if (x == null) return;
+        int cmplo = lo.compareTo(x.key);
+        int cmphi = hi.compareTo(x.key);
+        if (cmplo < 0) keys(x.left, queue, lo, hi);
+        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
+        if (cmphi > 0) keys(x.right, queue, lo, hi);
+
+    }
+
 
     public void printInOrder(){
         for (K s: keys()){
@@ -159,10 +165,16 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K, V>{
     }*/
 public static void main(String[] args) {
     BSTMap<String, Integer> b = new BSTMap<String, Integer>();
-    b.get("starChild");
-    b.put("starChild", 5);
-    b.put("KISS", 5);
-    b.printInOrder();
+    BSTMap<String, Integer> st = new BSTMap<String, Integer>();
+    st.get("starChild");
+    st.put("starChild", 5);
+    st.put("bob", 5);
+    st.put("car", 5);
+    st.put("put", 5);
+    st.put("zoo", 5);
+    st.put("water", 5);
+    st.put("toy", 5);
+    st.printInOrder();
 }
 
 
