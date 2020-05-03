@@ -43,11 +43,12 @@ public class TestComplexOomage {
         List<Oomage> deadlyList = new ArrayList<>();
 
         // Your code here.
+        //Due to overflow, we need keep the last four digits of every oomega in the deadlylist the same.
         int N = 100;
         for (int i = 0; i < N; i += 1) {
             ArrayList<Integer> params = new ArrayList<>();
             params.add(StdRandom.uniform(1,255));
-            for(int h =0;h<2;h++){
+            for(int h =0;h<4;h++){
                 params.add(166);
             }
             deadlyList.add(new ComplexOomage(params));
