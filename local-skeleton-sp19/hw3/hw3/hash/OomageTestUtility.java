@@ -17,16 +17,17 @@ public class OomageTestUtility {
         int N = oomages.size();
         int bucketNum;
         int[] bucket = new int[M];
-        for (Oomage i : oomages ) {
-            bucketNum = (oomages.get(i).hashCode() & 0x7FFFFFFF) % M;
-            bucket[bucketNum] ++;
+        for (Oomage i : oomages) {
+            bucketNum = (i.hashCode() & 0x7FFFFFFF) % M;
+            bucket[bucketNum]++;
         }
-        for (int i = 0; i < M; i++){
-            if (bucket[i] > N/2.5 || bucket[i] <N/50){
+        for (int i = 0; i < M; i++) {
+            if (bucket[i] > N / 2.5 || bucket[i] < N / 50) {
                 return false;
             }
         }
         return true;
+    }
 
 
 
