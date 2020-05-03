@@ -28,9 +28,9 @@ public void testHashCodePerfect() {
     SimpleOomage ooA = new SimpleOomage(5, 10, 20);
     int count = 0;
 
-    for (int i = 0; i < 256; i+=5) {
-        for (int j = 0; j < 256; j+=5) {
-            for (int k = 0; k < 256; k+=5) {
+    for (int i = 0; i < 255; i+=5) {
+        for (int j = 0; j < 255; j+=5) {
+            for (int k = 0; k < 255; k+=5) {
                 SimpleOomage ooA2 = new SimpleOomage(i, j, k);
                 if (ooA.hashCode() == ooA2.hashCode()) {
                     count++;
