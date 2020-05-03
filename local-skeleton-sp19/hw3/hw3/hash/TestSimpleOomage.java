@@ -19,17 +19,64 @@ public class TestSimpleOomage {
             assertEquals(hashCode, so.hashCode());
         }
     }*/
-
-/*    @Test
-    public void testHashCodePerfect() {
-        *//* TODO: Write a test that ensures the hashCode is perfect,
+@Test
+public void testHashCodePerfect() {
+        /* TODO: Write a test that ensures the hashCode is perfect,
           meaning no two SimpleOomages should EVER have the same
-          hashCode UNLESS they have the same red, blue, and green values!
-         *//*
+          hashCode!
+         */
+    SimpleOomage ooA = new SimpleOomage(5, 10, 20);
+    int count = 0;
+
+    for (int i = 0; i < 256; i+=5) {
+        for (int j = 0; j < 256; j+=5) {
+            for (int k = 0; k < 256; k+=5) {
+                SimpleOomage ooA2 = new SimpleOomage(i, j, k);
+                if (ooA.hashCode() == ooA2.hashCode()) {
+                    count++;
+                }
+            }
+        }
+    }
+
+    assertTrue(count == 1);
+}
+
+/*
+    @Test
+    public void testHashCodePerfect() {
+*/
+/*         TODO: Write a test that ensures the hashCode is perfect,
+          meaning no two SimpleOomages should EVER have the same
+          hashCode UNLESS they have the same red, blue, and green values!*//*
+
+
         SimpleOomage ooA = new SimpleOomage(5, 10, 20);
         SimpleOomage ooA2 = new SimpleOomage(5, 10, 20);
+        SimpleOomage ooA3 = new SimpleOomage(10, 5, 20);
+        SimpleOomage ooA4 = new SimpleOomage(10, 20, 5);
+        SimpleOomage ooA5 = new SimpleOomage(20, 5, 10);
+        SimpleOomage ooA6 = new SimpleOomage(20, 10, 5);
+        SimpleOomage ooA7 = new SimpleOomage(5, 20, 10);
 
-    }*/
+*/
+/*        assertEquals(ooA, ooA2);
+        assertNotEquals(ooA, ooA3);*//*
+
+
+        HashSet<SimpleOomage> hashSet = new HashSet<>();
+        hashSet.add(ooA);
+        assertTrue(hashSet.contains(ooA2));
+
+        assertFalse(hashSet.contains(ooA3));
+        assertFalse(hashSet.contains(ooA4));
+        assertFalse(hashSet.contains(ooA5));
+        assertFalse(hashSet.contains(ooA6));
+        assertFalse(hashSet.contains(ooA7));
+
+
+    }
+*/
 
 /*    @Test
     public void testEquals() {
@@ -42,14 +89,14 @@ public class TestSimpleOomage {
         assertNotEquals(ooA, "ketchup");
     }*/
 
-    @Test
+/*    @Test
     public void testHashCodeAndEqualsConsistency() {
         SimpleOomage ooA = new SimpleOomage(5, 10, 20);
         SimpleOomage ooA2 = new SimpleOomage(5, 10, 20);
         HashSet<SimpleOomage> hashSet = new HashSet<>();
         hashSet.add(ooA);
         assertTrue(hashSet.contains(ooA2));
-    }
+    }*/
 
     /* TODO: Uncomment this test after you finish haveNiceHashCodeSpread in OomageTestUtility */
     /*@Test

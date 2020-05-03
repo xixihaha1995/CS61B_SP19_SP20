@@ -67,11 +67,15 @@ public class SimpleOomage implements Oomage {
     }
 
     public static void main(String[] args) {
-        System.out.println("Drawing 4 random simple Oomages.");
+        SimpleOomage ooA = new SimpleOomage(5, 10, 20);
+        SimpleOomage ooA2 = new SimpleOomage(20, 10, 5);
+        System.out.println(ooA.hashCode());
+        System.out.println(ooA2.hashCode());
+       /* System.out.println("Drawing 4 random simple Oomages.");
         randomSimpleOomage().draw(0.25, 0.25, 1);
         randomSimpleOomage().draw(0.75, 0.75, 1);
         randomSimpleOomage().draw(0.25, 0.75, 1);
-        randomSimpleOomage().draw(0.75, 0.25, 1);
+        randomSimpleOomage().draw(0.75, 0.25, 1);*/
     }
 
     public String toString() {
