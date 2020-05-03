@@ -1,3 +1,4 @@
+import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
 import java.util.Set;
@@ -8,7 +9,7 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
     private int initialSize;
     private double loadFactor;
 //    private int buckNum;
-    private Deque<K>[] bucket;
+    private ArrayDeque<K>[] bucket;
 
     public MyHashMap(){
         this.initialSize = 16;
@@ -35,7 +36,10 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
         int buckNum = ( curHash & 0x7FFFFFFF) % initialSize;
         double curLoadFactor = bucket[buckNum].size()*1.0/sizeNum;
         if (curLoadFactor < loadFactor) {
-            bucket[buckNum].
+            ArrayDeque<K> curArray = bucket[buckNum];
+            curArray.add(key);
+            curArray[key].element() = value;
+            setForKeys.add(key);
         }
 
     }
