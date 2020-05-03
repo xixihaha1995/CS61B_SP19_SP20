@@ -1,26 +1,28 @@
 package hw3.hash;
 
+import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class TestComplexOomage {
 
-    @Test
+/*    @Test
     public void testHashCodeDeterministic() {
         ComplexOomage so = ComplexOomage.randomComplexOomage();
         int hashCode = so.hashCode();
         for (int i = 0; i < 100; i += 1) {
             assertEquals(hashCode, so.hashCode());
         }
-    }
+    }*/
 
     /* This should pass if your OomageTestUtility.haveNiceHashCodeSpread
        is correct. This is true even though our given ComplexOomage class
        has a flawed hashCode. */
-    /*@Test
+/*    @Test
     public void testRandomOomagesHashCodeSpread() {
         List<Oomage> oomages = new ArrayList<>();
         int N = 10000;
@@ -35,15 +37,26 @@ public class TestComplexOomage {
     /* TODO: Create a list of Complex Oomages called deadlyList
      * that shows the flaw in the hashCode function.
      */
-    /*
     @Test
     public void testWithDeadlyParams() {
+
         List<Oomage> deadlyList = new ArrayList<>();
 
         // Your code here.
+        int N = 100;
+        for (int i = 0; i < N; i += 1) {
+            ArrayList<Integer> params = new ArrayList<>();
+            params.add(StdRandom.uniform(1,255));
+            for(int h =0;h<4;h++){
+                params.add(165);
+            }
+            deadlyList.add(new ComplexOomage(params));
+        }
+
 
         assertTrue(OomageTestUtility.haveNiceHashCodeSpread(deadlyList, 10));
-    } */
+
+    }
 
     /** Calls tests for SimpleOomage. */
     public static void main(String[] args) {
