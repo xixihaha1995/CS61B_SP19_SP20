@@ -1,9 +1,11 @@
+import java.math.BigInteger;
 import java.util.*;
 
 public class MyHashMap<K,V> implements Map61B<K,V> {
     private int sizeNum;
     public Set<K> setForKeys;
     private int initialSize;
+    private int curBuSize;
     private double loadFactor;
 //    private int buckNum;
     private ArrayList<Entry<K,V>> bucket;
@@ -15,9 +17,26 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
         bucket.addAll (Collections.nCopies (initialSize, null));
         sizeNum = 0;
         setForKeys = new HashSet<K>();
+        curBuSize = initialSize;
     }
-    public MyHashMap(int initialSize){}
-    public MyHashMap(int initialSize, double loadFactor){}
+    public MyHashMap(int initialSize){
+        this.initialSize = initialSize;
+        this.loadFactor = 0.75;
+        bucket = new ArrayList<Entry<K,V>>(initialSize);
+        bucket.addAll (Collections.nCopies (initialSize, null));
+        sizeNum = 0;
+        setForKeys = new HashSet<K>();
+        curBuSize = initialSize;
+    }
+    public MyHashMap(int initialSize, double loadFactor){
+        this.initialSize = initialSize;
+        this.loadFactor = loadFactor;
+        bucket = new ArrayList<Entry<K,V>>(initialSize);
+        bucket.addAll (Collections.nCopies (initialSize, null));
+        sizeNum = 0;
+        setForKeys = new HashSet<K>();
+        curBuSize = initialSize;
+    }
 
 
     @Override
@@ -51,16 +70,51 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
             bucket.set (h, new Entry<K,V> (key, value, bucket.get(h)));
             sizeNum += 1;
             setForKeys.add(key);
+            //TODO bucket.size() return number of buckets or number of buckets who has key
+            if (sizeNum > bucket.size () * loadFactor) grow ();
         }
 
 
     }
+
+    private void grow () {
+        curBuSize = primeAbove(curBuSize *2);
+        MyHashMap<K,V> newMap
+                = new MyHashMap (curBuSize, loadFactor);
+        this.putAll (newMap);
+        copyFrom (newMap);
+    }
+    private void putAll(MyHashMap<K,V> S){
+        setForKeys = S.keySet();
+        for(K i: setForKeys){
+            int h = hash (i);
+            V value = S.get(i);
+            bucket.set (h, new Entry<K,V> (i, value, bucket.get(h)));
+            sizeNum += 1;
+        }
+
+    }
+    private void copyFrom (MyHashMap<K,V> S) {
+        sizeNum = S.sizeNum;
+        bucket = S.bucket;
+        loadFactor = S.loadFactor;
+    }
+
+    private int primeAbove (int N) {
+        BigInteger result;
+        String str = Integer.toString(N);
+        BigInteger a = new BigInteger(str);
+        result = a.nextProbablePrime();
+        return result.intValue();
+    }
+
+
     private int hash(Object key) {
         return  (key == null) ? 0
                 : (0x7fffffff & key.hashCode ()) % curBucketSize() ;
     }
     private int curBucketSize(){
-        return initialSize;
+        return curBuSize;
     }
     private static class Entry<K,V>{
         K keyNaive;
@@ -89,10 +143,10 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
 
     @Override
     public V get(Object key) {
-        if (bucket == null) {
+        if (this.bucket == null) {
             return null;
         }
-        Entry<K,V> e = find(key, bucket.get(hash(key)));
+        Entry<K,V> e = find(key, this.bucket.get(hash(key)));
         return (e == null) ? null : e.valueNaive;
     }
 
