@@ -72,7 +72,10 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
             setForKeys.add(key);
             //TODO bucket.size() return number of buckets or number of buckets who has key
             if (sizeNum > bucket.size () * loadFactor) grow ();
+        }else {
+             e.setValue(value);
         }
+
 
 
     }
