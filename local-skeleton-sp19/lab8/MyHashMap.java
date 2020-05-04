@@ -78,17 +78,21 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
     }
 
     private void grow () {
-        curBuSize = primeAbove(curBuSize *2);
+        int curBuSizeForNew;
+        curBuSizeForNew = primeAbove(curBuSize *2);
         MyHashMap<K,V> newMap
-                = new MyHashMap (curBuSize, loadFactor);
-        this.putAll (newMap);
+                = new MyHashMap (curBuSizeForNew, loadFactor);
+        newMap.putAll (this);
         copyFrom (newMap);
+
     }
     private void putAll(MyHashMap<K,V> S){
         setForKeys = S.keySet();
+        int h ;
+        V value;
         for(K i: setForKeys){
-            int h = hash (i);
-            V value = S.get(i);
+            h = hash (i);
+            value = S.get(i);
             bucket.set (h, new Entry<K,V> (i, value, bucket.get(h)));
             sizeNum += 1;
         }
@@ -143,10 +147,11 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
 
     @Override
     public V get(Object key) {
-        if (this.bucket == null) {
+        if (bucket == null) {
             return null;
         }
-        Entry<K,V> e = find(key, this.bucket.get(hash(key)));
+        int curhashTem = hash(key);
+        Entry<K,V> e = find(key, bucket.get(curhashTem));
         return (e == null) ? null : e.valueNaive;
     }
 
