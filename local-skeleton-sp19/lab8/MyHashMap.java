@@ -102,6 +102,7 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
         sizeNum = S.sizeNum;
         bucket = S.bucket;
         loadFactor = S.loadFactor;
+        curBuSize = S.curBuSize;
     }
 
     private int primeAbove (int N) {
