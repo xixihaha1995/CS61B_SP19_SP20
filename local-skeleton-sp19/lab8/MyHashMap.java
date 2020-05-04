@@ -11,7 +11,10 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
     public MyHashMap(){
         this.initialSize = 16;
         this.loadFactor = 0.75;
-//        bucket = new ArrayList<Entry<K,V>>(initialSize);
+        bucket = new ArrayList<Entry<K,V>>(initialSize);
+        bucket.addAll (Collections.nCopies (initialSize, null));
+        sizeNum = 0;
+        setForKeys = new HashSet<K>();
     }
     public MyHashMap(int initialSize){}
     public MyHashMap(int initialSize, double loadFactor){}
@@ -35,28 +38,24 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
     }
     @Override
     public void put(K key, V value) {
-/*        int curHash = key.hashCode();
-        int buckNum = ( curHash & 0x7FFFFFFF) % initialSize;*/
 
 
         int h = hash (key);
         Entry<K,V> e = find (key, bucket.get (h));
         if (e == null) {
-            bucket.set (h, new Entry<K,V> (key, value, null));
+            bucket.set (h, new Entry<K,V> (key, value, bucket.get(h)));
             sizeNum += 1;
             setForKeys.add(key);
-
-            //TODO how to add load Factor , resizing
- /*           if (sizeNum > bucket.size () * loadFactor) grow ();
-            return null;*/
-        } else
-             e.setValue (value);
+        }
 
 
-/*        double curLoadFactor = bucket.get(hash(key)).size()*1.0/sizeNum;
-        if ( !setForKeys.contains(key) ){
-            new bucket.set(hash(key), Entry<K,V>(key, value, null));
+/*        if(bucket ==null) {
+            Entry<K,V> e = find (key, null);
         } else {
+            Entry<K,V> e = find (key, bucket.get (h));
+        }
+
+        if (e == null) {
 
         }*/
 
