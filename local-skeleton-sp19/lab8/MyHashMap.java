@@ -21,22 +21,31 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
     public void clear() {
         setForKeys = null;
         sizeNum = 0;
+        bucket = null;
     }
 
     @Override
     public boolean containsKey(K key) {
-        return setForKeys.contains(key);
+        if (setForKeys == null) {
+            return false;
+        } else {
+            return setForKeys.contains(key);
+        }
+
     }
     @Override
     public void put(K key, V value) {
 /*        int curHash = key.hashCode();
         int buckNum = ( curHash & 0x7FFFFFFF) % initialSize;*/
 
+
         int h = hash (key);
         Entry<K,V> e = find (key, bucket.get (h));
         if (e == null) {
             bucket.set (h, new Entry<K,V> (key, value, bucket.get (h)));
             sizeNum += 1;
+            setForKeys.add(key);
+
             //TODO how to add load Factor , resizing
  /*           if (sizeNum > bucket.size () * loadFactor) grow ();
             return null;*/
@@ -54,7 +63,8 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
 
     }
     private int hash(Object key) {
-        return ( key.hashCode() & 0x7FFFFFFF) % bucket.size();
+        return  (key == null) ? 0
+                : (0x7fffffff & key.hashCode ()) % 16 ;
     }
     private static class Entry<K,V>{
         K keyNaive;
