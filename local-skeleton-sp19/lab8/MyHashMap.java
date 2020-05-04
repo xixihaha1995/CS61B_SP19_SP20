@@ -11,7 +11,7 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
     public MyHashMap(){
         this.initialSize = 16;
         this.loadFactor = 0.75;
-        bucket = new ArrayList<Entry<K,V>>(initialSize);
+//        bucket = new ArrayList<Entry<K,V>>(initialSize);
     }
     public MyHashMap(int initialSize){}
     public MyHashMap(int initialSize, double loadFactor){}
@@ -42,7 +42,7 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
         int h = hash (key);
         Entry<K,V> e = find (key, bucket.get (h));
         if (e == null) {
-            bucket.set (h, new Entry<K,V> (key, value, bucket.get (h)));
+            bucket.set (h, new Entry<K,V> (key, value, null));
             sizeNum += 1;
             setForKeys.add(key);
 
@@ -64,7 +64,10 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
     }
     private int hash(Object key) {
         return  (key == null) ? 0
-                : (0x7fffffff & key.hashCode ()) % 16 ;
+                : (0x7fffffff & key.hashCode ()) % curBucketSize() ;
+    }
+    private int curBucketSize(){
+        return initialSize;
     }
     private static class Entry<K,V>{
         K keyNaive;
@@ -93,8 +96,9 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
     @Override
     public V get(Object key) {
         Entry<K,V> e = find(key, bucket.get(key.hashCode()));
-        return e.valueNaive;
+        return (e == null) ? null : e.valueNaive;
     }
+
 
     @Override
     public int size() {
