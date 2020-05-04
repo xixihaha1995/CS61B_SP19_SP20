@@ -24,7 +24,11 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
     public void clear() {
         setForKeys = new HashSet<K>();
         sizeNum = 0;
-        bucket.addAll (Collections.nCopies (initialSize, null));
+        bucket = null;
+//        bucket.clear();
+
+
+//        bucket.addAll (Collections.nCopies (initialSize, null));
 //        bucket = null;
     }
 
@@ -85,6 +89,9 @@ public class MyHashMap<K,V> implements Map61B<K,V> {
 
     @Override
     public V get(Object key) {
+        if (bucket == null) {
+            return null;
+        }
         Entry<K,V> e = find(key, bucket.get(hash(key)));
         return (e == null) ? null : e.valueNaive;
     }
