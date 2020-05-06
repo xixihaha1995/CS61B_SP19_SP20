@@ -10,19 +10,18 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     @Override
     public void add(T item, double priority) {
         if (setForKeys.contains(item)) {
-            throw new IllegalArgumentException;
+            throw new IllegalArgumentException("Key already existed");
         }
-        Entry<T> curEntry = new Entry<>(item,priority);
+        Entry<T> curEntry = new Entry(item,priority);
         fakeTree.add(curEntry);
         swim(curEntry);
-
         size += 1;
         setForKeys.add(item);
     }
     private void swim(Entry<T> entry) {
         if ( parent(entry).priority > entry.priority ) {
             swap (entry, parent(entry));
-            //TODO swim(parent(entry)) or swim(entry)
+            /* TODO swim(parent(entry)) or swim(entry) */
             swim(parent(entry));
         }
 
@@ -54,22 +53,59 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 
     @Override
     public boolean contains(T item) {
-        return false;
+        return setForKeys.contains(item);
     }
 
     @Override
     public T getSmallest() {
-        return null;
+        return fakeTree.get(1).key;
     }
 
     @Override
     public T removeSmallest() {
-        return null;
+        T returnT = fakeTree.get(1).key;
+        size -= 1;
+        setForKeys.remove(returnT);
+
+        fakeTree.remove(1);
+        if (size > 0) {
+            Entry<T> lastEntry = fakeTree.get(fakeTree.size()-1);
+            Entry<T> tempEntry = new Entry(lastEntry.key,lastEntry.priority);
+            fakeTree.set(1,tempEntry);
+            sink(fakeTree.get(1));
+        }
+
+        return returnT;
+    }
+
+    private void sink(Entry<T> entry) {
+        Entry<T> childEntry = smallerChild(entry);
+        if ( childEntry.priority < entry.priority ) {
+            swap (entry, childEntry);
+            sink(smallerChild(entry));
+        }
+
+    }
+    private Entry<T> smallerChild (Entry<T> entry) {
+        Entry<T> returnEntry;
+        if (leftChild(entry).priority <= rightChild(entry).priority) {
+            return leftChild(entry);
+        } else {
+            return rightChild(entry);
+        }
+    }
+    private Entry<T> leftChild (Entry<T> entry) {
+        int leftChildIndex = fakeTree.indexOf(entry) * 2;
+        return fakeTree.get(leftChildIndex);
+    }
+    private Entry<T> rightChild (Entry<T> entry) {
+        int rightChildIndex = fakeTree.indexOf(entry) * 2 + 1;
+        return fakeTree.get(rightChildIndex);
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
@@ -102,25 +138,4 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         fakeTree.add(sentinel);
     }
 
-    //    private tree root;
-
-/*    private class tree<T>{
-
-        tree left;
-        tree right;
-        T key;
-        int index;
-        double priority;
-
-        public tree(T item, double weight, tree left, tree right) {
-            key = item;
-            priority = weight;
-            this.left = left;
-            this.right = right;
-        }
-        public T parent(T item) {
-
-        }
-
-    }*/
 }
