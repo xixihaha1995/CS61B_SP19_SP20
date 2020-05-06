@@ -5,11 +5,11 @@ import org.junit.Test;
 public class TestExtrinsicPQ {
     @Test
     public void testAdd(){
-        ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
-        EPQ.add("cat",3.5);
-        EPQ.add("bigCat",5.3);
+        ExtrnsicPQ<Character> EPQ = new ExtrnsicPQ<>();
+        EPQ.add('c',3.5);
+        EPQ.add('d',5.3);
     }
-/*
+
    @Test
     public void testAddContainSize(){
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
@@ -26,7 +26,7 @@ public class TestExtrinsicPQ {
         ExtrnsicPQ<Character> EPQ = new ExtrnsicPQ<>();
         EPQ.add('c',3.5);
         EPQ.removeSmallest();
-        EPQ.add(65,3.5);
+        EPQ.add('d',3.5);
         EPQ.removeSmallest();
     }
 
@@ -42,5 +42,5 @@ public class TestExtrinsicPQ {
         EPQ.add("cat",3.5);
         EPQ.add("dog",5);
         EPQ.changePriority("cat",7.0);
-    }*/
+    }
 }

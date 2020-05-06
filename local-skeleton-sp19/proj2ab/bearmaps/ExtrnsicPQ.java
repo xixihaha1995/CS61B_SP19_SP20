@@ -110,6 +110,17 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 
     @Override
     public void changePriority(T item, double priority) {
+        if ( !contains(item) ){
+            throw new IllegalArgumentException("Key not existed");
+        }
+        for( Entry<T> i: fakeTree){
+            if(item == i.key){
+                i.priority = priority;
+                break;
+            }
+        }
+
+
 
     }
 
