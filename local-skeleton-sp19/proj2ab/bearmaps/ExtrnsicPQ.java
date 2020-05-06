@@ -12,23 +12,43 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         if (setForKeys.contains(item)) {
             throw new IllegalArgumentException;
         }
-        fakeTree.add(new Entry(item,priority));
+        Entry<T> curEntry = new Entry<>(item,priority);
+        fakeTree.add(curEntry);
+        swim(curEntry);
 
         size += 1;
         setForKeys.add(item);
     }
     private void swim(Entry<T> entry) {
-
-    }
-    private int parent (int index) {
-        if (index % 2 ==0) {
-            return index / 2;
-        } else {
-            return (index -1)/2;
+        if ( parent(entry).priority > entry.priority ) {
+            swap (entry, parent(entry));
+            //TODO swim(parent(entry)) or swim(entry)
+            swim(parent(entry));
         }
-    }
-    private void swap(Entry<T> entryA, Entry<T> entryB) {
 
+    }
+
+    private Entry<T> parent (Entry<T> entry) {
+        int parentIndex;
+        if (fakeTree.indexOf(entry) % 2 ==0) {
+            parentIndex = fakeTree.indexOf(entry) / 2;
+
+        } else {
+            parentIndex = (fakeTree.indexOf(entry) - 1) / 2;
+        }
+        return fakeTree.get(parentIndex);
+    }
+
+    private void swap(Entry<T> entryA, Entry<T> entryB) {
+        T tempKey;
+        double tempPriority;
+
+        tempKey = entryA.key;
+        tempPriority = entryA.priority;
+        entryA.key = entryB.key;
+        entryA.priority = entryB.priority;
+        entryB.key = tempKey;
+        entryB.priority = tempPriority;
     }
 
 

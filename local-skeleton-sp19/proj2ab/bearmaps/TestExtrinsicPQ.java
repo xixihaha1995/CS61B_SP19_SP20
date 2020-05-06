@@ -9,6 +9,7 @@ public class TestExtrinsicPQ {
         EPQ.add("cat",3.5);
         EPQ.add("bigCat",5.3);
     }
+    /*
    @Test
     public void testAddContainSize(){
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
@@ -19,7 +20,7 @@ public class TestExtrinsicPQ {
        EPQ.add("mouse",5.0);
        assertEquals(3,EPQ.size());
     }
-    /*
+
     @Test
     public void testAddRemove(){
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
