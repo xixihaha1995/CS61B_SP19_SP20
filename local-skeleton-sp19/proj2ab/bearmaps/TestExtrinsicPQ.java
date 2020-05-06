@@ -9,7 +9,7 @@ public class TestExtrinsicPQ {
         EPQ.add("cat",3.5);
         EPQ.add("bigCat",5.3);
     }
-
+/*
    @Test
     public void testAddContainSize(){
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
@@ -23,13 +23,13 @@ public class TestExtrinsicPQ {
 
     @Test
     public void testAddRemove(){
-        ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
-        EPQ.add("cat",3.5);
+        ExtrnsicPQ<Character> EPQ = new ExtrnsicPQ<>();
+        EPQ.add('c',3.5);
         EPQ.removeSmallest();
-/*        EPQ.add("cat",3.5);
-        EPQ.removeSmallest();*/
+        EPQ.add(65,3.5);
+        EPQ.removeSmallest();
     }
-    /*
+
     @Test
     public void testChangePriority() {
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
