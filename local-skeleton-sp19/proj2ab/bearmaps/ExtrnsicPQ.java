@@ -9,9 +9,28 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 
     @Override
     public void add(T item, double priority) {
+        if (setForKeys.contains(item)) {
+            throw new IllegalArgumentException;
+        }
         fakeTree.add(new Entry(item,priority));
 
+        size += 1;
+        setForKeys.add(item);
     }
+    private void swim(Entry<T> entry) {
+
+    }
+    private int parent (int index) {
+        if (index % 2 ==0) {
+            return index / 2;
+        } else {
+            return (index -1)/2;
+        }
+    }
+    private void swap(Entry<T> entryA, Entry<T> entryB) {
+
+    }
+
 
     @Override
     public boolean contains(T item) {
@@ -38,13 +57,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 
     }
 
-    public int parent (int index) {
-        if (index % 2 ==0) {
-            return index / 2;
-        } else {
-            return (index -1)/2;
-        }
-    }
+
 
     private Set<T> setForKeys;
     private int size;
@@ -59,10 +72,14 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     }
 
     //TODO constructor for ExtrnsicPQ
+    //fakeTree is leaving one empty spot tree
     public ExtrnsicPQ(){
         setForKeys = new HashSet<T>();
         size = 0;
         fakeTree = new ArrayList<Entry<T>>();
+        Entry<T> sentinel;
+        sentinel = new Entry("random", 2.5);
+        fakeTree.add(sentinel);
     }
 
     //    private tree root;

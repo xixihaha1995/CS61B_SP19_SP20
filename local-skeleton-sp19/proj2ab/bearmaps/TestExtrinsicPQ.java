@@ -7,15 +7,19 @@ public class TestExtrinsicPQ {
     public void testAdd(){
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
         EPQ.add("cat",3.5);
+        EPQ.add("bigCat",5.3);
     }
-   /* @Test
+   @Test
     public void testAddContainSize(){
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
         EPQ.add("cat",3.5);
         assertTrue(EPQ.contains("cat"));
         EPQ.add("dog",5.0);
         assertEquals(2,EPQ.size());
+       EPQ.add("mouse",5.0);
+       assertEquals(3,EPQ.size());
     }
+    /*
     @Test
     public void testAddRemove(){
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
