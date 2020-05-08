@@ -152,18 +152,15 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
             if(leftIndex != null) {
                 return leftIndex;
             }
-            if(rightIndex != null) {
-                return rightIndex;
-            }
             return null;
         }
 
     }
     private Integer leftChild (int entryIndex) {
-        return (entryIndex * 2 > size + 1) ? null: entryIndex * 2;
+        return (entryIndex * 2 > size ) ? null: entryIndex * 2;
     }
     private Integer rightChild (int entryIndex) {
-        return ( entryIndex * 2 + 1 > size + 1) ? null: entryIndex * 2;
+        return ( entryIndex * 2 + 1 > size ) ? null: entryIndex * 2;
     }
 
 

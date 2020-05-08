@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TestExtrinsicPQ {
-/*    @Test
+    @Test
     public void testAdd(){
         ExtrnsicPQ<Character> EPQ = new ExtrnsicPQ<>();
         EPQ.add('c',3.5);
@@ -42,7 +42,7 @@ public class TestExtrinsicPQ {
         EPQ.changePriority("dog",4.0);
         EPQ.changePriority("cat",7);
         assertEquals("dog",EPQ.getSmallest());
-    }*/
+    }
     @Test
     public void testChangePriority() {
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
