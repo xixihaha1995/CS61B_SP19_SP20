@@ -1,6 +1,7 @@
 package bearmaps;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +18,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         swim(curEntry);
         size += 1;
         setForKeys.add(item);
+        indexForKeys.put(item,fakeTree.indexOf(curEntry));
     }
     private void swim(Entry<T> entry) {
         if ( parent(entry).priority > entry.priority ) {
@@ -126,6 +128,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 
 
     private Set<T> setForKeys;
+    private HashMap<T,Integer> indexForKeys;
     private int size;
     private ArrayList<Entry<T>> fakeTree;
     private class Entry<T>{
@@ -141,6 +144,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     //fakeTree is leaving one empty spot tree
     public ExtrnsicPQ(){
         setForKeys = new HashSet<T>();
+        indexForKeys = new HashMap<>();
         size = 0;
         fakeTree = new ArrayList<Entry<T>>();
         Entry<T> sentinel;
