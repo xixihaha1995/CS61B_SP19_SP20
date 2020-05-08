@@ -1,5 +1,7 @@
 package bearmaps;
 
+import edu.princeton.cs.algs4.In;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -38,22 +40,30 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     private void swim(Entry<T> entry) {
 
         int curInd = indexForKeys.get(entry.key);
-        Entry<T> parentEntry = fakeTree.get(parent(curInd));
-        if ( parentEntry.priority > entry.priority ) {
-            swap (entry, parentEntry);
-            swim(parentEntry);
+        if( parent(curInd) !=null ){
+            if (parent(curInd)>0){
+                Entry<T> parentEntry = fakeTree.get(parent(curInd));
+                if ( parentEntry.priority > entry.priority ) {
+                    swap (entry, parentEntry);
+                    swim(parentEntry);
+                }
+            }
         }
+
+
 
     }
 
-    private int parent (int curIndex) {
+    private Integer parent (int curIndex) {
 
         if (curIndex % 2 ==0) {
             temIndex = curIndex / 2;
         } else {
             temIndex = (curIndex - 1) / 2;
         }
-        return temIndex;
+        return temIndex > 0 ? temIndex: null ;
+
+
     }
 
     private void swap(Entry<T> entryA, Entry<T> entryB) {
@@ -108,21 +118,32 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         }
 
     }
-    private int smallerChild (int entryIndex) {
+    private Integer smallerChild (int entryIndex) {
         int returnIndex;
-        int leftIndex = leftChild(entryIndex);
-        int rightIndex = rightChild(entryIndex);
-        if (fakeTree.get(leftIndex).priority <= fakeTree.get(rightIndex).priority) {
-            return leftIndex;
+        Integer leftIndex = leftChild(entryIndex);
+        Integer rightIndex = rightChild(entryIndex);
+        if (leftIndex !=null && rightIndex != null) {
+            if (fakeTree.get(leftIndex).priority <= fakeTree.get(rightIndex).priority) {
+                return leftIndex;
+            } else {
+                return rightIndex;
+            }
         } else {
-            return rightIndex;
+            if(leftIndex != null) {
+                return leftIndex;
+            }
+            if(rightIndex != null) {
+                return rightIndex;
+            }
+            return null;
         }
+
     }
-    private int leftChild (int entryIndex) {
-        return entryIndex * 2;
+    private Integer leftChild (int entryIndex) {
+        return (entryIndex * 2 > size + 1) ? null: entryIndex * 2;
     }
-    private int rightChild (int entryIndex) {
-        return entryIndex * 2 + 1;
+    private Integer rightChild (int entryIndex) {
+        return ( entryIndex * 2 + 1 > size + 1) ? null: entryIndex * 2;
     }
 
 
@@ -142,23 +163,8 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         int curIndex = indexForKeys.get(item);
         Entry<T> curEntry = fakeTree.get(curIndex);
         curEntry.priority = updatedPriority;
-        int parentIndex = parent(curIndex);
-        if(fakeTree.get(parentIndex).priority < curEntry.priority) {
-            swim(curEntry);
-        }
-        int childIndex = smallerChild(curIndex);
-        Entry<T> childEntry = fakeTree.get(childIndex);
-        if (childEntry.priority < curEntry.priority) {
-            sink(curEntry);
-        }
-        //TODO swim or sink
-
-/*        for( Entry<T> i: fakeTree){
-            if(item == i.key){
-                i.priority = priority;
-                break;
-            }
-        }*/
+        swim(curEntry);
+        sink(curEntry);
     }
 
 
@@ -184,9 +190,9 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         indexForKeys = new HashMap<>();
         size = 0;
         fakeTree = new ArrayList<Entry<T>>();
-        Entry<T> sentinel;
-        sentinel = new Entry("random", 2.5);
-        fakeTree.add(sentinel);
+/*        Entry<T> sentinel;
+        sentinel = new Entry("random", 0);*/
+        fakeTree.add(null);
         temIndex = 0;
     }
 
