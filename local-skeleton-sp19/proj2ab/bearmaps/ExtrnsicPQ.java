@@ -19,8 +19,11 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         Entry<T> curEntry = new Entry(item,priority);
 
         fakeTree.add(curEntry);
+        temIndex = size + 1;
+        indexForKeys.put(item,temIndex);
         if ( size > 0 ) {
-            swim(fakeTree.get(size));
+            fakeTree.get(temIndex);
+            swim(fakeTree.get(temIndex));
             size += 1;
             setForKeys.add(item);
             indexForKeys.put(item,temIndex);
@@ -57,11 +60,18 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     private Integer parent (int curIndex) {
 
         if (curIndex % 2 ==0) {
-            temIndex = curIndex / 2;
+            if(curIndex / 2 >0){
+                return temIndex = curIndex / 2;
+            }
+
         } else {
-            temIndex = (curIndex - 1) / 2;
+            if( (curIndex - 1) / 2 > 0){
+                return temIndex = (curIndex - 1) / 2;
+            }
+
         }
-        return temIndex > 0 ? temIndex: null ;
+        temIndex = temIndex > 0 ? temIndex: null ;
+        return null;
 
 
     }
@@ -114,6 +124,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         Entry<T> childEntry = fakeTree.get(childIndex);
         if ( childEntry.priority < entry.priority ) {
             swap (entry, childEntry);
+            temIndex = childIndex;
             sink(childEntry);
         }
 
@@ -165,6 +176,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         curEntry.priority = updatedPriority;
         swim(curEntry);
         sink(curEntry);
+        indexForKeys.replace(item,temIndex);
     }
 
 
@@ -173,6 +185,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     private HashMap<T,Integer> indexForKeys;
     private int size;
     private int temIndex;
+    private int temSinkIndex;
     private ArrayList<Entry<T>> fakeTree;
     private class Entry<T>{
         T key;
