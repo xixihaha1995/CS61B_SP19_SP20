@@ -84,12 +84,15 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         tempKey = entryA.key;
         tempPriority = entryA.priority;
         temIndex = indexForKeys.get(entryA.key);
+        int entryBIndex = indexForKeys.get(entryB.key);
+
         entryA.key = entryB.key;
         entryA.priority = entryB.priority;
-        indexForKeys.replace(entryA.key,indexForKeys.get(entryB.key));
+
+        indexForKeys.replace(entryB.key,temIndex);
         entryB.key = tempKey;
         entryB.priority = tempPriority;
-        indexForKeys.replace(entryB.key,temIndex);
+        indexForKeys.replace(entryB.key,entryBIndex);
     }
 
 
