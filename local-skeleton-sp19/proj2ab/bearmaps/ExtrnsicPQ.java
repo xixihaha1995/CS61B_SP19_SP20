@@ -110,6 +110,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 
     @Override
     public void changePriority(T item, double priority) {
+        //TODO from O(N) to O(log N)
         if ( !contains(item) ){
             throw new IllegalArgumentException("Key not existed");
         }
