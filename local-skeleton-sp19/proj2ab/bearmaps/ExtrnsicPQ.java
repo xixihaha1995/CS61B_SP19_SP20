@@ -10,15 +10,15 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 
     @Override
     public void add(T item, double priority) {
-        if (setForKeys.contains(item)) {
+/*        if (setForKeys.contains(item)) {
             throw new IllegalArgumentException("Key already existed");
-        }
-        Entry<T> curEntry = new Entry(item,priority);
-        fakeTree.add(curEntry);
-        swim(curEntry);
+        }*/
+
+        fakeTree.add(new Entry(item,priority));
+        swim(fakeTree.get(fakeTree.size()-1));
         size += 1;
-        setForKeys.add(item);
-        indexForKeys.put(item,fakeTree.indexOf(curEntry));
+//        setForKeys.add(item);
+//        indexForKeys.put(item,fakeTree.indexOf(curEntry));
     }
     private void swim(Entry<T> entry) {
         if ( parent(entry).priority > entry.priority ) {
@@ -56,6 +56,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     @Override
     public boolean contains(T item) {
         return setForKeys.contains(item);
+
     }
 
     @Override
@@ -114,9 +115,9 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     public void changePriority(T item, double updatedPriority) {
         //TODO from O(N) to O(log N)
         //modify your addForChangingPriority
-        if ( !contains(item) ){
+/*        if ( !contains(item) ){
             throw new IllegalArgumentException("Key not existed");
-        }
+        }*/
         Entry<T> curEntry = fakeTree.get(indexForKeys.get(item));
         curEntry.priority = updatedPriority;
 
