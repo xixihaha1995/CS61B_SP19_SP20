@@ -16,28 +16,45 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 
         Entry<T> curEntry = new Entry(item,priority);
 
-        fakeTree.add(new Entry(item,priority));
-        size += 1;
-        swim(fakeTree.get(size));
-        setForKeys.add(item);
-        indexForKeys.put(item,fakeTree.indexOf(curEntry));
+        fakeTree.add(curEntry);
+        if ( size > 0 ) {
+            swim(fakeTree.get(size));
+            size += 1;
+            setForKeys.add(item);
+            indexForKeys.put(item,temIndex);
+        } else {
+            size += 1;
+            setForKeys.add(item);
+            indexForKeys.put(item,1);
+        }
+
+
+
+
+
+        //simply get the curEntry index and put it in HashMap
+
     }
     private void swim(Entry<T> entry) {
-        if ( parent(entry).priority > entry.priority ) {
-            swap (entry, parent(entry));
+
+        int curInd = indexForKeys.get(entry.key);
+        Entry<T> parentEntry = fakeTree.get(parent(curInd));
+        if ( parentEntry.priority > entry.priority ) {
+            swap (entry, parentEntry);
             /* TODO swim(parent(entry)) or swim(entry) */
-            swim(parent(entry));
+            swim(parentEntry);
         }
 
     }
 
-    private Entry<T> parent (Entry<T> entry) {
-        if (fakeTree.indexOf(entry) % 2 ==0) {
-            return fakeTree.get(fakeTree.indexOf(entry) / 2);
+    private int parent (int curIndex) {
 
+        if (curIndex % 2 ==0) {
+            temIndex = curIndex / 2;
         } else {
-            return fakeTree.get((fakeTree.indexOf(entry) - 1) / 2) ;
+            temIndex = (curIndex - 1) / 2;
         }
+        return temIndex;
     }
 
     private void swap(Entry<T> entryA, Entry<T> entryB) {
@@ -134,6 +151,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     private Set<T> setForKeys;
     private HashMap<T,Integer> indexForKeys;
     private int size;
+    private int temIndex;
     private ArrayList<Entry<T>> fakeTree;
     private class Entry<T>{
         T key;
@@ -154,6 +172,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         Entry<T> sentinel;
         sentinel = new Entry("random", 2.5);
         fakeTree.add(sentinel);
+        temIndex = 0;
     }
 
 }
