@@ -26,7 +26,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
             swim(fakeTree.get(temIndex));
             size += 1;
             setForKeys.add(item);
-            indexForKeys.put(item,temIndex);
+//            indexForKeys.put(item,temIndex);
         } else {
             size += 1;
             setForKeys.add(item);
@@ -79,13 +79,17 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     private void swap(Entry<T> entryA, Entry<T> entryB) {
         T tempKey;
         double tempPriority;
+        int temIndex;
 
         tempKey = entryA.key;
         tempPriority = entryA.priority;
+        temIndex = indexForKeys.get(entryA.key);
         entryA.key = entryB.key;
         entryA.priority = entryB.priority;
+        indexForKeys.replace(entryA.key,indexForKeys.get(entryB.key));
         entryB.key = tempKey;
         entryB.priority = tempPriority;
+        indexForKeys.replace(entryB.key,temIndex);
     }
 
 
@@ -176,7 +180,7 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         curEntry.priority = updatedPriority;
         swim(curEntry);
         sink(curEntry);
-        indexForKeys.replace(item,temIndex);
+//        indexForKeys.replace(item,temIndex);
     }
 
 

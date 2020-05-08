@@ -41,11 +41,11 @@ public class TestExtrinsicPQ {
     @Test
     public void TestgetSmallest() {
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
-        EPQ.add("cat",1);
+        EPQ.add("cat",0.1);
         EPQ.add("dog",2);
         EPQ.changePriority("cat",3.0);
-        EPQ.changePriority("cat",1.0);
-        EPQ.changePriority("cat",2.1);
+        EPQ.changePriority("dog",4.0);
+        EPQ.changePriority("cat",7);
         assertEquals("dog",EPQ.getSmallest());
     }
 }
