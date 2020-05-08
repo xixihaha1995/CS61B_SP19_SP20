@@ -16,28 +16,18 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
             throw new IllegalArgumentException("Key already existed");
         }*/
 
-        Entry<T> curEntry = new Entry(item,priority);
-
-        fakeTree.add(curEntry);
+        fakeTree.add(new Entry(item,priority));
         temIndex = size + 1;
         indexForKeys.put(item,temIndex);
         if ( size > 0 ) {
-            fakeTree.get(temIndex);
             swim(fakeTree.get(temIndex));
             size += 1;
             setForKeys.add(item);
-//            indexForKeys.put(item,temIndex);
         } else {
             size += 1;
             setForKeys.add(item);
             indexForKeys.put(item,1);
         }
-
-
-
-
-
-        //simply get the curEntry index and put it in HashMap
 
     }
     private void swim(Entry<T> entry) {

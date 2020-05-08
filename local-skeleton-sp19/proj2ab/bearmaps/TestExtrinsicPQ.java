@@ -34,7 +34,7 @@ public class TestExtrinsicPQ {
 
 
     @Test
-    public void TestgetSmallest() {
+    public void testGetSmallest() {
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
         EPQ.add("cat",0.1);
         EPQ.add("dog",2);
