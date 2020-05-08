@@ -111,18 +111,21 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     }
 
     @Override
-    public void changePriority(T item, double priority) {
+    public void changePriority(T item, double updatedPriority) {
         //TODO from O(N) to O(log N)
         //modify your addForChangingPriority
         if ( !contains(item) ){
             throw new IllegalArgumentException("Key not existed");
         }
-        for( Entry<T> i: fakeTree){
+        Entry<T> curEntry = fakeTree.get(indexForKeys.get(item));
+        curEntry.priority = updatedPriority;
+
+/*        for( Entry<T> i: fakeTree){
             if(item == i.key){
                 i.priority = priority;
                 break;
             }
-        }
+        }*/
     }
 
 
