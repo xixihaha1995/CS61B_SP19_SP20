@@ -14,11 +14,13 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
             throw new IllegalArgumentException("Key already existed");
         }*/
 
+        Entry<T> curEntry = new Entry(item,priority);
+
         fakeTree.add(new Entry(item,priority));
-        swim(fakeTree.get(fakeTree.size()-1));
         size += 1;
-//        setForKeys.add(item);
-//        indexForKeys.put(item,fakeTree.indexOf(curEntry));
+        swim(fakeTree.get(size));
+        setForKeys.add(item);
+        indexForKeys.put(item,fakeTree.indexOf(curEntry));
     }
     private void swim(Entry<T> entry) {
         if ( parent(entry).priority > entry.priority ) {
@@ -30,14 +32,12 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     }
 
     private Entry<T> parent (Entry<T> entry) {
-        int parentIndex;
         if (fakeTree.indexOf(entry) % 2 ==0) {
-            parentIndex = fakeTree.indexOf(entry) / 2;
+            return fakeTree.get(fakeTree.indexOf(entry) / 2);
 
         } else {
-            parentIndex = (fakeTree.indexOf(entry) - 1) / 2;
+            return fakeTree.get((fakeTree.indexOf(entry) - 1) / 2) ;
         }
-        return fakeTree.get(parentIndex);
     }
 
     private void swap(Entry<T> entryA, Entry<T> entryB) {
