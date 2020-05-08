@@ -126,14 +126,16 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 
     private void sink(Entry<T> entry) {
         int curIndex = indexForKeys.get(entry.key);
-        int childIndex = smallerChild(curIndex);
-
-        Entry<T> childEntry = fakeTree.get(childIndex);
-        if ( childEntry.priority < entry.priority ) {
-            swap (entry, childEntry);
-            temIndex = childIndex;
-            sink(childEntry);
+        Integer childIndex = smallerChild(curIndex);
+        if( childIndex !=null ){
+            Entry<T> childEntry = fakeTree.get(childIndex);
+            if ( childEntry.priority < entry.priority ) {
+                swap (entry, childEntry);
+                sink(childEntry);
+            }
         }
+
+
 
     }
     private Integer smallerChild (int entryIndex) {

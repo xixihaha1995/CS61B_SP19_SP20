@@ -32,12 +32,7 @@ public class TestExtrinsicPQ {
         EPQ.removeSmallest();
     }
 
-    @Test
-    public void testChangePriority() {
-        ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
-        EPQ.add("cat",3.5);
-        EPQ.changePriority("cat",7.0);
-    }*/
+
     @Test
     public void TestgetSmallest() {
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
@@ -47,5 +42,11 @@ public class TestExtrinsicPQ {
         EPQ.changePriority("dog",4.0);
         EPQ.changePriority("cat",7);
         assertEquals("dog",EPQ.getSmallest());
+    }*/
+    @Test
+    public void testChangePriority() {
+        ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
+        EPQ.add("cat",3.5);
+        EPQ.changePriority("cat",7.0);
     }
 }
