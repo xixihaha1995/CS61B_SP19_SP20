@@ -3,14 +3,16 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TestExtrinsicPQ {
-    @Test
+/*    @Test
     public void testAdd(){
         ExtrnsicPQ<Character> EPQ = new ExtrnsicPQ<>();
         EPQ.add('c',3.5);
         EPQ.add('d',5.3);
+        EPQ.add('e',0.3);
+        EPQ.add('a',-0.3);
     }
 
-  /* @Test
+   @Test
     public void testAddContainSize(){
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
         EPQ.add("cat",3.5);
@@ -35,12 +37,13 @@ public class TestExtrinsicPQ {
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
         EPQ.add("cat",3.5);
         EPQ.changePriority("cat",7.0);
-    }
+    }*/
     @Test
     public void TestgetSmallest() {
         ExtrnsicPQ<String> EPQ = new ExtrnsicPQ<>();
         EPQ.add("cat",3.5);
         EPQ.add("dog",5);
         EPQ.changePriority("cat",7.0);
-    }*/
+        assertEquals("dog",EPQ.getSmallest());
+    }
 }

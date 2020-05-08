@@ -41,7 +41,6 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
         Entry<T> parentEntry = fakeTree.get(parent(curInd));
         if ( parentEntry.priority > entry.priority ) {
             swap (entry, parentEntry);
-            /* TODO swim(parent(entry)) or swim(entry) */
             swim(parentEntry);
         }
 
@@ -99,29 +98,33 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
     }
 
     private void sink(Entry<T> entry) {
-        Entry<T> childEntry = smallerChild(entry);
+        int curIndex = indexForKeys.get(entry.key);
+        int childIndex = smallerChild(curIndex);
+
+        Entry<T> childEntry = fakeTree.get(childIndex);
         if ( childEntry.priority < entry.priority ) {
             swap (entry, childEntry);
-            sink(smallerChild(entry));
+            sink(childEntry);
         }
 
     }
-    private Entry<T> smallerChild (Entry<T> entry) {
-        Entry<T> returnEntry;
-        if (leftChild(entry).priority <= rightChild(entry).priority) {
-            return leftChild(entry);
+    private int smallerChild (int entryIndex) {
+        int returnIndex;
+        int leftIndex = leftChild(entryIndex);
+        int rightIndex = rightChild(entryIndex);
+        if (fakeTree.get(leftIndex).priority <= fakeTree.get(rightIndex).priority) {
+            return leftIndex;
         } else {
-            return rightChild(entry);
+            return rightIndex;
         }
     }
-    private Entry<T> leftChild (Entry<T> entry) {
-        int leftChildIndex = fakeTree.indexOf(entry) * 2;
-        return fakeTree.get(leftChildIndex);
+    private int leftChild (int entryIndex) {
+        return entryIndex * 2;
     }
-    private Entry<T> rightChild (Entry<T> entry) {
-        int rightChildIndex = fakeTree.indexOf(entry) * 2 + 1;
-        return fakeTree.get(rightChildIndex);
+    private int rightChild (int entryIndex) {
+        return entryIndex * 2 + 1;
     }
+
 
     @Override
     public int size() {
@@ -135,8 +138,20 @@ public class ExtrnsicPQ<T> implements ExtrinsicMinPQ<T> {
 /*        if ( !contains(item) ){
             throw new IllegalArgumentException("Key not existed");
         }*/
-        Entry<T> curEntry = fakeTree.get(indexForKeys.get(item));
+
+        int curIndex = indexForKeys.get(item);
+        Entry<T> curEntry = fakeTree.get(curIndex);
         curEntry.priority = updatedPriority;
+        int parentIndex = parent(curIndex);
+        if(fakeTree.get(parentIndex).priority < curEntry.priority) {
+            swim(curEntry);
+        }
+        int childIndex = smallerChild(curIndex);
+        Entry<T> childEntry = fakeTree.get(childIndex);
+        if (childEntry.priority < curEntry.priority) {
+            sink(curEntry);
+        }
+        //TODO swim or sink
 
 /*        for( Entry<T> i: fakeTree){
             if(item == i.key){
