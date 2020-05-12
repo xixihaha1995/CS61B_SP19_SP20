@@ -9,7 +9,6 @@ public class oddNumber{
             list.add(l+1);
         }
         else {
-
             list.add(l);
         }
         for(int i=1;i<r-l;i++) {
