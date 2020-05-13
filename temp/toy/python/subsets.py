@@ -14,9 +14,9 @@ class Solution(object):
         def dfs(nums, temp, index):
             self.res.append(temp[:])
 
-            for i in xrange(i, len(nums)):
+            for i in xrange(index, len(nums)):
                 temp.append(nums[i])
-                dfs(nums, temp, i)
+                dfs(nums, temp, i+1)
                 temp.pop()
 
         dfs(nums, [], 0)
