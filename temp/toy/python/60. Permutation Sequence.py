@@ -1,10 +1,12 @@
+import math
+
 from xlwt.compat import xrange
 
 
 class Solution(object):
 
     def __init__(self):
-        self.res = ""
+        self.res = []
 
     def getPermutation(self, n, k):
         """
@@ -12,20 +14,23 @@ class Solution(object):
         :rtype: List[List[int]]
         """
 
-        def dfs(temp, map, remainder):
-            if len(nums) == len(temp):
-                self.res.append(temp[:])
+        def dfs(n, temp, map):
+            if n == 0:
+                self.res.append(map[0])
                 return
-            for i in xrange(index, len(nums)):
-                if i > index and nums[i] == nums[i-1]:
-                    continue
-                temp.append(nums[i])
-                dfs(nums, temp, i + 1)
-                temp.pop()
+            for i in xrange(n):
+                if i * math.factorial(n) < temp and (i + 1) * math.factorial(n) > temp:
+                    res += map[i + 1]
+                    map.remove(i + 1)
+                    curdigit = i
+                    break
+            dfs(n - 1, temp - curdigit * curdigit, map)
 
-        dfs(n,k)
+        for i in xrange(n):
+            map.append(i)
+        dfs(n, k, map)
         return self.res
 
 
 if __name__ == '__main__':
-    print(Solution().getPermutation(3,3))
+    print(Solution().getPermutation(4, 17))
