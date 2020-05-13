@@ -20,11 +20,12 @@ class Solution(object):
                 return
             for i in xrange(n):
                 if i * math.factorial(n) < temp and (i + 1) * math.factorial(n) > temp:
-                    res += map[i + 1]
+                    self.res.append(map[i + 1])
                     map.remove(i + 1)
                     curdigit = i
                     break
-            dfs(n - 1, temp - curdigit * curdigit, map)
+            dfs(n - 1, temp - curdigit * math.factorial(n), map)
+
 
         for i in xrange(n):
             map.append(i)
