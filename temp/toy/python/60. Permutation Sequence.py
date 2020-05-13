@@ -25,11 +25,10 @@ class Solution(object):
                     curdigit = i
                     break
             dfs(n - 1, temp - curdigit * math.factorial(n), map)
-
-
+        map = []
         for i in xrange(n):
             map.append(i)
-        dfs(n, k, map)
+        dfs(n, k-1, map)
         return self.res
 
 
