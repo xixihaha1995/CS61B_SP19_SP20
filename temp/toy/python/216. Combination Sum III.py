@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        self.helper(range(1, 9), res, k, n, 0, [])
+        self.helper(range(1, 10), res, k, n, 0, [])
         return res
 
     def helper(self, nums, res, count, remainder, index, path):
@@ -20,4 +20,4 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    print(Solution().combinationSum3(3, 7))
+    print(Solution().combinationSum3(3, 15))
