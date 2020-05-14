@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        self.helper(candidates, res, target, 0, [])
+        self.helper(sorted(candidates), res, target, 0, [])
         return res
 
     def helper(self, candidates, res, remainder, index, path):
@@ -15,6 +15,8 @@ class Solution(object):
         if (remainder == 0):
             res.append(path[:])
         for i in range(index, len(candidates)):
+            if i > index and candidates[i] == candidates[i-1]:
+                continue
             path.append(candidates[i])
             self.helper(candidates, res, remainder - candidates[i], i+1, path)
             path.pop()
