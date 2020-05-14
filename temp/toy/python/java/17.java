@@ -29,12 +29,9 @@ class Solution {
 			return;
 		}
 		String s = d[Character.getNumericValue(digits.charAt(curIndex))];
-		for (int i = curIndex; i < s.length(); ++i) {
+		for (int i = 0; i < s.length(); ++i) {
 			curLettCombo[curIndex] = s.charAt(i);
 			dfs(digits, d, ans, curLettCombo, curIndex + 1);
-//    		curL
-//    		Char c = s.get(i);
-//    		curLettCombo.add(c);
 
 		}
 
