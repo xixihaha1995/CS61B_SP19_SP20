@@ -19,16 +19,16 @@ class 17. Letter Combinations of a Phone Number {
 
 
     }
-    private void dfs(digits, d, ans, curLettCombo, curLen)
+    private void dfs(digits, d, ans, curLettCombo, curIndex)
     {
-    	if ( curLettCombo.length() == digits.length()){
+    	if ( curIndex == digits.length()){
     		ans.add(new String(curLettCombo));
     		return;
     	}
-    	String s = d[Character.getNumricValue(digits.charAt(curLen))];
-    	for (int i = curLen; i < s.length(); ++i) {
-    		curLettCombo[curLen] = s.charAt(i);
-    		dfs(digits, d, ans, curLettCombo, curLen);
+    	String s = d[Character.getNumricValue(digits.charAt(curIndex))];
+    	for (int i = curIndex; i < s.length(); ++i) {
+    		curLettCombo[curIndex] = s.charAt(i);
+    		dfs(digits, d, ans, curLettCombo, curIndex + 1);
 //    		curL
 //    		Char c = s.get(i);
 //    		curLettCombo.add(c);
