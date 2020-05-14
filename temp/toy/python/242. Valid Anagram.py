@@ -1,3 +1,6 @@
+import collections
+
+
 class Solution(object):
     def isAnagram(self, s, t):
         """
@@ -5,11 +8,9 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        res = false
-        self.helper(s, t, res)
-
-    def helper(self, s, t, res):
-        return s.__hash__()==t.__hash__() ? True : False
+        scount = collections.Counter(s)
+        tcount = collections.Counter(t)
+        return scount == tcount
 
 
 if __name__ == '__main__':
