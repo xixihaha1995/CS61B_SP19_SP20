@@ -17,7 +17,7 @@ class NumArray(object):
         :type j: int
         :rtype: int
         """
-        return self.sums[j] - self.sums[i]
+        return self.sums[j+1] - self.sums[i]
 
 if __name__ == '__main__':
     obj = NumArray([-2, 0, 3, -5, 2, -1])
