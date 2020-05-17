@@ -6,6 +6,8 @@ class Solution:
         m = len(obstacleGrid)
         n = len(obstacleGrid[0])
         memo = [ [0]* n for _ in range(m)]
+
+        memo[0][0] = 1
         for i in range (m):
             for j in range(n):
                 if obstacleGrid[i][j] == 1:
@@ -19,8 +21,8 @@ class Solution:
 if __name__ == '__main__':
     print(Solution().uniquePathsWithObstacles(
         [
-            [0, 0, 0],
             [0, 1, 0],
+            [0, 0, 0],
             [0, 0, 0]
         ]
     ))
