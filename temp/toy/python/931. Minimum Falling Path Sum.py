@@ -9,12 +9,14 @@ class Solution(object):
         for i in range(1, m):
             for j in range(n):
                 sum = A[i-1][j]
-                if j < n-1:
-                    sum = min(sum, A[i-1][j-1], A[i-1][j+1])
+                if j > 0:
+                    sum = min(sum, A[i-1][j-1])
+                if j < n - 1:
+                    sum = min(sum, A[i-1][j+1])
                 A[i][j] += sum
         return min(A[-1])
 
 if __name__ == '__main__':
     print(Solution().minFallingPathSum(
-        [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        [[17,82],[1,-44]]
     ))
