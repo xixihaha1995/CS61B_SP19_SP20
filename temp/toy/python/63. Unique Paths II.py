@@ -5,6 +5,7 @@ class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         m = len(obstacleGrid)
         n = len(obstacleGrid[0])
+
         memo = [ [0]* n for _ in range(m)]
 
         memo[0][0] = 1
