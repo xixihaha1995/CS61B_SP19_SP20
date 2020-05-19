@@ -3,17 +3,15 @@ from typing import List
 
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        lencur = 1
-        n = len(nums)
-        cur = nums[0]
-        for i in range(1,n):
-            if nums[i] < nums[i - 1] and lencur == 1:
-                cur = nums[i]
-            if nums[i] > cur:
-                cur = nums[i]
-                lencur += 1
-        return lencur
+        dp = [1] * (len(nums))
+        for i in range(len(nums)):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    dp[i] = max(dp[i], dp[j]+1)
+        print(dp)
+        return max(dp)
 
 
 if __name__ == '__main__':
-    print(Solution().lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))
+    # print(Solution().lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))
+    print(Solution().lengthOfLIS([10, 9, 2, 5, 3, 4]))

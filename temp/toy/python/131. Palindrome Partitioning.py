@@ -1,10 +1,12 @@
 class Solution(object):
+    def __init__(self):
+        self.isPalindrome = lambda s : s == s[::-1]
+
     def partition(self, s):
         """
         :type s: str
         :rtype: List[List[str]]
         """
-        self.isPalindrome = lambda s : s == s[::-1]
         res = []
         self.helper(s, res, [])
         return res
