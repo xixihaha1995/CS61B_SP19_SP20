@@ -13,8 +13,8 @@ class Solution:
         queue.append(root)
         while queue:
             level = []
-            node = queue.popleft()
             for i in range(len(queue)):
+                node = queue.popleft()
                 if node.left:
                     level.append(node.left.val)
                     queue.append(node.left)
