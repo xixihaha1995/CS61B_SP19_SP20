@@ -8,8 +8,13 @@ class Solution:
     def minDepth(self, root: TreeNode) -> int:
         if not root:
             return 0
-        if not root.left and root.right:
-            return 1
-        left_height = self.minDepth(root.left) if root.left else -sys.maxsize
-        right_height = self.minDepth(root.right) if root.right else -sys.maxsize
-        return min(left_height, right_height) + 1
+        # if not root.left and root.right:
+        #     return 1
+        left_height = self.minDepth(root.left)
+        right_height = self.minDepth(root.right)
+        if not root.left:
+            return right_height+1
+        elif not root.right:
+            return left_height + 1
+        else:
+            return min(left_height, right_height) + 1
