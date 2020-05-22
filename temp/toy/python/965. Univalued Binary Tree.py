@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# do something static and dynamic webpage
 class Solution:
     def isUnivalTree(self, root: TreeNode) -> bool:
         if not root:
