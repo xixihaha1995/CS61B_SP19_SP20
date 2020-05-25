@@ -22,6 +22,8 @@ class Solution:
             mem[sets].sort(reverse = True)
         res = ""
         for i in range(len(s)):
+            # mem can be itereated via original str index,
+            # though mem have many different sets, all len(set) == len(original string)
             res.append(mem[find(i)].pop())
         return res
 
