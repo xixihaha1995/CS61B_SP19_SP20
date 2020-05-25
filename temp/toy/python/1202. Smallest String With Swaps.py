@@ -1,9 +1,10 @@
 import collections
+from typing import List
 
 
 class Solution:
     def smallestStringWithSwaps(self, s: str, pairs: List[List[int]]) -> str:
-        parent = list(range(len(s))
+        parent = list(range(len(s)))
         def find(r):
             while parent[r] != r:
                 parent[r] = find(parent[r])
@@ -20,13 +21,16 @@ class Solution:
             mem[find(value)].append(s[counter])
         for sets in mem:
             mem[sets].sort(reverse = True)
-        res = ""
+        res = []
         for i in range(len(s)):
-            # mem can be itereated via original str index,
-            # though mem have many different sets, all len(set) == len(original string)
             res.append(mem[find(i)].pop())
         return res
 
+
+if __name__ == '__main__':
+    s = "dcab"
+    pairs = [[0, 3], [1, 2]]
+    print(Solution().smallestStringWithSwaps(s, pairs))
 
 
 
