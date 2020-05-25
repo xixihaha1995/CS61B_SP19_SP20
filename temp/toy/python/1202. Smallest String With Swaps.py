@@ -6,7 +6,7 @@ class Solution:
     def smallestStringWithSwaps(self, s: str, pairs: List[List[int]]) -> str:
         parent = list(range(len(s)))
         def find(r):
-            while parent[r] != r:
+            if parent[r] != r:
                 parent[r] = find(parent[r])
             return r
 
@@ -24,7 +24,7 @@ class Solution:
         res = []
         for i in range(len(s)):
             res.append(mem[find(i)].pop())
-        return res
+        return "".join(res)
 
 
 if __name__ == '__main__':
