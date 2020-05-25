@@ -3,8 +3,8 @@ class Solution:
         parent = list(range(len(s))
         mem = collections.defaultdict(list)
         for l, r in pairs:
-            pl = self.find(l)
-            pr = self.find(r)
+            pl = find(l)
+            pr = find(r)
             if pl != pr:
                 parent[l] = pr
 
@@ -17,9 +17,9 @@ class Solution:
             res.append(mem[find(i)].pop())
         return res
 
-    def find(self, r):
-        while parent[r] != r:
-            r = parent[r]
-        return r
+        def find(r):
+            while parent[r] != r:
+                parent[r] = find(parent[r])
+            return r
 
 
