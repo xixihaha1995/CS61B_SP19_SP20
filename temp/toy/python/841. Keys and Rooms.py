@@ -1,8 +1,9 @@
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
-        visited = {}
+        visited = set()
         self.dfs(rooms, 0, visited)
         return len(visited) == len(rooms)
+
     def dfs(self, rooms, cur, visited):
         if cur in visited: return
         visited.add(cur)
