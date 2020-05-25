@@ -1,3 +1,6 @@
+import collections
+
+
 class Solution:
     def smallestStringWithSwaps(self, s: str, pairs: List[List[int]]) -> str:
         parent = list(range(len(s))
@@ -16,7 +19,7 @@ class Solution:
         for counter, value in enumerate(parent):
             mem[find(value)].append(s[counter])
         for sets in mem:
-            mem[set].sorted(reverse = True)
+            mem[sets].sort(reverse = True)
         res = ""
         for i in range(len(s)):
             res.append(mem[find(i)].pop())
