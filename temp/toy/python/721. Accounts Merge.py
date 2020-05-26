@@ -20,11 +20,9 @@ class Solution(object):
                     em_to_id[email] = i
                     i += 1
                 dsu.union(em_to_id[acc[1]], em_to_id[email])
-
         ans = collections.defaultdict(list)
         for email in em_to_name:
             ans[dsu.find(em_to_id[email])].append(email)
-
         return [[em_to_name[v[0]]] + sorted(v) for v in ans.values()]
 
 
@@ -34,14 +32,11 @@ class DSU:
 
     def find(self, x):
         if x != self.par[x]:
-            self.par[x] = self.find(self.par[x])
+            self.par[x] = self.find[self.par[x]]
         return self.par[x]
 
     def union(self, x, y):
         self.par[self.find(x)] = self.find(y)
-
-    def same(self, x, y):
-        return self.find(x) == self.find(y)
 
 
 if __name__ == '__main__':
