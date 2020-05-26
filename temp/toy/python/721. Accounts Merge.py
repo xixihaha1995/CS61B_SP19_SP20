@@ -32,7 +32,7 @@ class DSU:
 
     def find(self, x):
         if x != self.par[x]:
-            self.par[x] = self.find[self.par[x]]
+            self.par[x] = self.find(self.par[x])
         return self.par[x]
 
     def union(self, x, y):
