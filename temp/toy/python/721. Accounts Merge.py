@@ -2,8 +2,12 @@ import collections
 from typing import List
 
 
-class Solution:
-    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+class Solution(object):
+    def accountsMerge(self, accounts):
+        """
+        :type accounts: List[List[str]]
+        :rtype: List[List[str]]
+        """
         dsu = DSU()
         em_to_name = dict()
         em_to_id = dict()
@@ -23,20 +27,22 @@ class Solution:
 
         return [[em_to_name[v[0]]] + sorted(v) for v in ans.values()]
 
-    class DSU:
-        def __init__(self):
-            self.par = range(10001)
 
-        def find(self, x):
-            if x != self.par[x]:
-                self.par[x] = self.find(self.par[x])
-            return self.par[x]
+class DSU:
+    def __init__(self):
+        self.par = list(range(10001))
 
-        def union(self, x, y):
-            self.par[self.find(x)] = self.find(y)
+    def find(self, x):
+        if x != self.par[x]:
+            self.par[x] = self.find(self.par[x])
+        return self.par[x]
 
-        def same(self, x, y):
-            return self.find(x) == self.find(y)
+    def union(self, x, y):
+        self.par[self.find(x)] = self.find(y)
+
+    def same(self, x, y):
+        return self.find(x) == self.find(y)
+
 
 if __name__ == '__main__':
     accounts = [["John", "johnsmith@mail.com", "john00@mail.com"],
