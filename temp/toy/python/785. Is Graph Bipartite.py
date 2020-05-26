@@ -6,14 +6,14 @@ class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         visited = [0] * len(graph)
         for i in range(len(graph)):
-            if graph[i] and visited[i] == 0:
+            if visited[i] == 0:
                 visited[i] = 1
                 q = collections.deque()
                 q.append(i)
                 while q:
                     v = q.popleft()
                     for next in graph[v]:
-                        if visited[v] != 0:
+                        if visited[next] != 0:
                             if visited[v] == visited[next]:
                                 return False
                         else:
