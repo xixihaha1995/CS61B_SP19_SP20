@@ -1,3 +1,7 @@
+import collections
+from typing import List
+
+
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         ans = []
@@ -7,8 +11,8 @@ class Solution:
             table[x][y] = value
             table[y][x] = 1.0/value
         cur = 0
-        for x, y in queries:
-            if x, y in table:
+        for (x, y) in queries:
+            if x in table and y in table:
                 cur = self.dfs(table, x, y,visited)
             else:
                 cur = -1.0
@@ -17,13 +21,12 @@ class Solution:
     def dfs(self, table, x, y, visited):
         if x == y:
             return 1.0
-        if x in visited:
-            continue
         visited.add(x)
         for next in table[x]:
+            if next in visited: continue
             d = self.dfs(table,next, y, visited)
             if d > 0:
-                return d * table[next][y]
+                return d * table[x][next]
         return -1.0
 
 if __name__ == '__main__':
