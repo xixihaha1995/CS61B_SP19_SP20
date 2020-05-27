@@ -13,6 +13,6 @@ class Solution:
                 for x in 'ACGT':
                     newgene = gene[:i] + x + gene[i+1:]
                     if newgene in banset and newgene != end:
-                        bfs.append(newgene,i+1)
+                        bfs.append(newgene,step + 1)
                         banset.remove(newgene)
         return -1
