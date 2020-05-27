@@ -10,9 +10,10 @@ class Solution:
 
             bfs = collections.deque()
             bfs.append(i)
+            color[i] = 1
             while bfs:
                 cur = bfs.popleft()
-                color[cur] = 1
+
                 for next in graph[cur]:
                     if color[next] != 0:
                         if color[next] == color[cur]: return False
