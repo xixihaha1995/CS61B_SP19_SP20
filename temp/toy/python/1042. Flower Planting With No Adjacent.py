@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def gardenNoAdj(self, N: int, paths: List[List[int]]) -> List[int]:
         res = [0] * N
@@ -16,3 +19,8 @@ class Solution:
                 res[i] = color
                 break
         return res
+
+if __name__ == '__main__':
+    print(Solution().gardenNoAdj(
+        3, [[1, 2], [2, 3], [3, 1]]
+    ))
