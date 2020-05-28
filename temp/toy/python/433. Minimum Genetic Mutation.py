@@ -12,9 +12,10 @@ class Solution:
             gene, step = bfs.popleft()
             if gene == end: return step
             for i in range(len(gene)):
+                print('length')
                 for x in 'ACGT':
                     newgene = gene[:i] + x + gene[i+1:]
-                    if newgene in banset and newgene != end:
+                    if newgene in banset and newgene != gene:
                         bfs.append((newgene,step + 1))
                         banset.remove(newgene)
         return -1
