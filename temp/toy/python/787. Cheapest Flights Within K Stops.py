@@ -9,7 +9,7 @@ class Solution:
         for i in range(K+1):
             temp = list(cost)
             for flight in flights:
-                temp[flight[1]] = min(temp[flight[0]] + flight[2], temp[flight[1]] )
+                temp[flight[1]] = min(cost[flight[0]] + flight[2], temp[flight[1]] )
             cost = temp
         return -1 if cost[dst] >=1e9 else cost[dst]
 
