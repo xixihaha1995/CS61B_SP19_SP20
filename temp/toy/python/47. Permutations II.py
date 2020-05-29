@@ -11,20 +11,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-
-        def dfs(nums, temp, index):
-            if len(nums) == len(temp):
-                self.res.append(temp[:])
-                return
-            for i in xrange(index, len(nums)):
-                if i > index and nums[i] == nums[i-1]:
-                    continue
-                temp.append(nums[i])
-                dfs(nums, temp, i + 1)
-                temp.pop()
-
-        dfs(nums, [], 0)
-        return self.res
+        res = []
+        self.helper(nums, res,[])
+        return res
+    def helper(self, nums, res, path):
+        if not nums and path not in res:
+            res.append(path[:])
+        for i in range(len(nums)):
+            self.helper(nums[:i] + nums[i+1], res, path +[nums[i]])
+        self.helper()
 
 
 if __name__ == '__main__':
