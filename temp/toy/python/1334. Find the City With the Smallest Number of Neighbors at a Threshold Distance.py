@@ -8,6 +8,6 @@ class Solution:
         for k in range(n):
             for i in range(n):
                 for j in range(n):
-                    d[i][j] = min(d[i][j], d[k][j])
+                    d[i][j] = min(d[i][j], d[k][j] + d[i][k])
         res = { sum(t <= distanceThreshold for t in d[i]) : i for i in range(n) }
         return res[min(res)]
