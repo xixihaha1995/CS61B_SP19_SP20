@@ -12,6 +12,8 @@ class Solution:
             return False
         if board[x][y] != word[i]:
             return False
+        board[x][y] = board[x][y].swapcase()
         isexit = self.exit(board, x+1,y, word, i+1) or self.exit(board, x-1,y, word, i+1)\
         or self.exit(board, x,y+1, word, i+1) or self.exit(board, x,y-1,word, i+1)
+        board[x][y] = board[x][y].swapcase()
         return isexit
