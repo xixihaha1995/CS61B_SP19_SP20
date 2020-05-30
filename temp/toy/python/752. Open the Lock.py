@@ -1,33 +1,25 @@
-import collections
-
-
 class Solution:
     def openLock(self, deadends: List[str], target: str) -> int:
         deadset = set(deadends)
-        if target in deadends: return -1
-        visited = set()
-        visited.add(["0000"])
-        q = collections.deque()
-        q.append("0000")
+        if (target in deadset) or ("0000" in deadset): return -1
+        que = collections.deque()
+        que.append("0000")
+        visited = set(["0000"])
         step = 0
-        while q:
-            size = len(q)
+        while que:
             step += 1
+            size = len(que)
             for i in range(size):
-                point = q.popleft()
+                point = que.popleft()
                 for j in range(4):
-
-                    for k in range(-1,2,2):
-                        newpoint = [i for i in point]
-                        newpoint[j] = chr((ord(newpoint[j]-ord('0')+k + 10)) % 10 + ord('0'))
-                        newpoint = "".join(newpoint)
-                        if newpoint == target:
+                    for k in range(-1, 2, 2):
+                        newPoint = [i for i in point]
+                        newPoint[j] = chr((ord(newPoint[j]) - ord('0') + k + 10) % 10 + ord('0'))
+                        newPoint = "".join(newPoint)
+                        if newPoint == target:
                             return step
-                        if newpoint in deadset or newpoint in visited:
+                        if (newPoint in deadset) or (newPoint in visited):
                             continue
-                        q.append(newpoint)
-                        visited.add(newpoint)
+                        que.append(newPoint)
+                        visited.add(newPoint)
         return -1
-
-
-
