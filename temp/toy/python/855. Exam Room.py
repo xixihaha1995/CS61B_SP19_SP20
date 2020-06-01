@@ -7,7 +7,7 @@ class ExamRoom:
     def seat(self) -> int:
         N = self.N
         L = self.L
-        if not L: res = 0
+        if not self.L: res = 0
         else:
             d, res = L[0], 0
             for a, b in zip(L, L[1:]):
@@ -16,7 +16,7 @@ class ExamRoom:
                     res = (b + a)/2
                 if N - 1 - L[-1] > d:
                     res = N - 1
-            bisect.insort(L, res)
+        bisect.insort(L, res)
         return res
 
     def leave(self, p: int) -> None:
