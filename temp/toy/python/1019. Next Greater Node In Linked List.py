@@ -11,7 +11,7 @@ class Solution:
             head = head.next
         res = [0] * len(nums)
         stack=[]
-        for i,n in nums:
+        for i,n in enumerate(nums):
             while stack and nums[stack[-1]] < n:
                 res[stack.pop()] = n
             stack.append(i)
