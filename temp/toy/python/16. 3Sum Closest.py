@@ -8,15 +8,15 @@ class Solution:
             s, e = t + 1, N -1
             while s < e:
 
-                _sum = nums[t] + nums[s] + nums[e]
+                sumthis = nums[t] + nums[s] + nums[e]
 
-                if _sum == target:
+                if sumthis == target:
                     ans = target
-                    break
-                diff = abs(_sum - target)
+                    return ans
+                diff = abs(sumthis - target)
                 if diff < d:
                     d = diff
-                    ans = sum
-                if _sum > target: e -= 1
-                else: s += 1
+                    ans = sumthis
+                if sumthis > target: e -= 1
+                else: s+= 1
         return ans
