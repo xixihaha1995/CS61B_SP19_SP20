@@ -4,17 +4,17 @@ from typing import List
 
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
+        if not nums: return 0
         dp = collections.defaultdict(list)
-        longest = []
+        longest = 1
         for i in range(len(nums)):
             dp[nums[i]].append(nums[i])
             for j in range(i):
                 if nums[i] > nums[j] and len(dp[nums[i]]) <= len(dp[nums[j]]):
                     dp[nums[i]] = dp[nums[j]][:]
                     dp[nums[i]].append(nums[i])
-                    if len(dp[nums[i]]) > len(longest):
-                        longest = dp[nums[i]][:]
-        return len(longest)
+                    longest = max(longest, len(nums))
+        return longest
 
 
 if __name__ == '__main__':
