@@ -4,6 +4,7 @@ from typing import List
 class Solution:
     def longestStrChain(self, words: List[str]) -> int:
         if not words: return 0
+        words.sort()
         n = len(words)
         dp = [1] * n
         longest = 1
