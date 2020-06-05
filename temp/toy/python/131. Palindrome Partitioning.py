@@ -1,25 +1,22 @@
-class Solution(object):
-    def __init__(self):
-        self.isPalindrome = lambda s : s == s[::-1]
+from typing import List
 
-    def partition(self, s):
-        """
-        :type s: str
-        :rtype: List[List[str]]
-        """
+
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        isvalid = lambda x: x == x[::-1]
         res = []
-        self.helper(s, res, [])
+        path = []
+        def helper(s, path, res):
+            if not s:
+                res.append(path[:])
+                return
+            for i in range(1,len(s)+1):
+                if isvalid(s[:i]):
+                    path.append(s[:i])
+                    helper(s[i:], path, res)
+                    path.pop()
+        helper(s, path, res)
         return res
-
-    def helper(self, s, res,  path):
-        if not s:
-            res.append(path[:])
-            # return
-        for i in range(1, len(s) + 1):
-            if self.isPalindrome(s[:i]):
-                path.append(s[:i])
-                self.helper(s[i:],res, path )
-                path.pop()
 
 
 if __name__ == '__main__':

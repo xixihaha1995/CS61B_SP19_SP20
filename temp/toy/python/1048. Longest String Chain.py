@@ -8,8 +8,8 @@ class Solution:
 
         def mycmp(x, y):
             return len(x) - len(y)
-
         words.sort(key=functools.cmp_to_key(mycmp))
+
         n = len(words)
         dp = [1] * n
         longest = 1
