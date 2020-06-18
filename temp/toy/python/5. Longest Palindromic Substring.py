@@ -15,6 +15,6 @@ class Solution(object):
                     maxL = i-j + 1
                     start = j
                     end = i
-            dp[j][i] = 1
+            dp[i][i] = 1
         return s[start:end+1]
 
