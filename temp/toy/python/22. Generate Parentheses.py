@@ -1,21 +1,36 @@
-from typing import List
+class Solution {
+public:
+    vector < string > generateParenthesis(int
 
 
-class Solution:
-    def generateParenthesis(self, n: int) -> List[str]:
-        res = []
-        self.helper(res, n, n, "")
-        return res
+n) {
+    vector < string > ans;
+string
+cur;
+if (n > 0)
+dfs(n, n, cur, ans);
+return ans;
 
-    def helper(self, res, left, right, path):
-        if left == 0 and right == 0:
-            res.append(path)
-            return
-        if left > 0:
-            self.helper(res, left - 1, right, path + "(")
-        if left < right:
-            self.helper(res, left, right - 1, path + ")")
+}
+private:
+void
+dfs(int
+l, int
+r, string & s, vector < string > & ans){
+if (l + r == 0){
+ans.push_back(s);
+return;
+}
+if (l > r)
+    return;
+if (l > 0) {
+dfs(l-1, r, s += "(", ans);
+s.pop_back();
+}
+if (r > 0) {
+dfs(1, r-1, s += ")", ans);
+s.pop_back();
+}
 
-
-if __name__ == '__main__':
-    print(Solution().generateParenthesis( 3 ))
+}
+};
