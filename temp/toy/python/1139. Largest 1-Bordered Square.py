@@ -1,49 +1,44 @@
-class Solution:
-    def largest1BorderedSquare(self, grid) -> int:
-
-        if len(grid) == 0 or len(grid[0]) == 0:
-            return 0
-
+class Solution(object):
+    def largest1BorderedSquare(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        if not grid or not grid[0]: return 0
         maxLen = 0
         m, n = len(grid), len(grid[0])
-        # 遍历每个点
         for i in range(m):
             for j in range(n):
                 if grid[i][j] == 1:
                     flag1 = True
-                    currLen = maxLen
-                    while i + currLen < m and j + currLen < n:
+                    curlen = maxLen
+                    while i + curlen < m and j + curlen < n:
                         flag2 = True
-                        # 如果‘左边界‘有0， 那么检查下一个点
-                        for a in range(i, i + currLen + 1):
+                        for a in range(i, i+curlen+1):
                             if grid[a][j] != 1:
                                 flag1 = False
                                 break
-                        if not flag1:
-                            break
-                        # 如果‘上边界‘有0， 那么检查下一个点
-                        for b in range(j, j + currLen + 1):
+                        if not flag1: break
+                        for b in range(j, j + curlen + 1):
                             if grid[i][b] != 1:
                                 flag1 = False
                                 break
-                        if not flag1:
-                            break
-                        # 如果’右边界’有0， 那么继续在这一点，检查边长+1的正方形
-                        for a in range(i, i + currLen + 1):
-                            if grid[a][j + currLen] != 1:
-                                currLen += 1
+                        if not  flag1: break
+
+                        for a in range(i, i+curlen+1):
+                            if grid[a][j+curlen] != 1:
+                                curlen += 1
                                 flag2 = False
                                 break
-                        if not flag2:
-                            continue
-                        # 如果’下边界’有0， 那么继续在这一点，检查边长+1的正方形
-                        for b in range(j, j + currLen + 1):
-                            if grid[i + currLen][b] != 1:
-                                currLen += 1
+                        if not flag2: continue
+                        for b in range(j, j + curlen + 1):
+                            if grid[i+curlen][b] != 1:
+                                curlen += 1
                                 flag2 = False
                                 break
-                        if not flag2:
-                            continue
-                        currLen += 1
-                        maxLen = currLen
-        return maxLen * maxLen
+                        if not  flag2: continue
+
+                        curlen += 1
+                        maxLen = curlen
+        return maxLen*maxLen
+
