@@ -6,7 +6,7 @@ class Solution:
         indegrees = [0] * numCourses
         adj = [[] for _ in range (numCourses)]
 
-        for cur, pre in enumerate(prerequisites):
+        for cur, pre in prerequisites:
             indegrees[cur] += 1
             adj[pre].append(cur)
 
