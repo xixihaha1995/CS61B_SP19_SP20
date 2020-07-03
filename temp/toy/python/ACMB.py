@@ -1,8 +1,10 @@
 def add(a, b):
     return a+b
 
-line = int(input())
 
-for i in range(line):
+t = int(input())
+for i in range(t):
     line = input().split()
-    print(add(int(line[0]), int(line[1])))
+    a = int(line[0])
+    b = int(line[1])
+    print(add(a, b))
