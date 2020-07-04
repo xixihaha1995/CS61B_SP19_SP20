@@ -1,20 +1,21 @@
 class Solution:
-    def dfs(self, graph, colors, i, color, N):
-        colors[i] = color
-        for j in range(N):
-            if graph[i][j] == 1:
-                if colors[j] == color: return False
-                if colors[j] == 0  and not self.dfs(graph, colors, j, -1 * color, N):
-                    return False
-        return True
-
     def possibleBipartition(self, N: int, dislikes: List[List[int]]) -> bool:
-        graph = [[0]*N for _ in range(N)]
-        colors = [0]*N
+        graph = collections.defaultdict(list)
+        color = [0] * N
         for dis in dislikes:
-            graph[dis[0]-1][dis[1]-1] = 1
-            graph[dis[1]-1][dis[0] - 1] = 1
+            graph[dis[0]-1].append(dis[1]-1)
+            graph[dis[1]-1].append(dis[0]-1)
         for i in range(N):
-            if colors[i] == 0 and not self.dfs(graph, colors, i, 1, N):
-                return False
+            if color[i] != 0: continue
+            bfs = collections.deque()
+            bfs.append(i)
+            while bfs:
+                cur = bfs.popleft()
+                color[cur] = 1
+                for next in graph[cur]:
+                    if color[next] != 0:
+                        if color[next]== color[cur]: return False
+                    else:
+                        color[next] = -1 * color[cur]
+                        bfs.append(next)
         return True
