@@ -1,24 +1,20 @@
 class Solution:
-    def possibleBipartition(self, N: int, dislikes: List[List[int]]) -> bool:
-        graph = collections.defaultdict(list)
-        for dislike in dislikes:
-            graph[dislike[0]-1].append(dislike[1]-1)
-            graph[dislike[1]-1].append(dislike[0]-1)
-        color = [0] * N
-        for i in range(N):
-            if color[i] != 0 : continue
-
-            bfs = collections.deque()
-            bfs.append(i)
-            color[i] = 1
-            while bfs:
-                cur = bfs.popleft()
-
-                for next in graph[cur]:
-                    if color[next] != 0:
-                        if color[next] == color[cur]: return False
-                    else:
-                        color[next] = -color[cur]
-                        bfs.append(next)
+    def dfs(self, graph, colors, i, color, N):
+        colors[i] = color
+        for j in range(N):
+            if graph[i][j] == 1:
+                if colors[j] == color: return False
+                if colors[j] == 0  and not self.dfs(graph, colors, j, -1 * color, N):
+                    return False
         return True
 
+    def possibleBipartition(self, N: int, dislikes: List[List[int]]) -> bool:
+        graph = [[0]*N for _ in range(N)]
+        colors = [0]*N
+        for dis in dislikes:
+            graph[dis[0]-1][dis[1]-1] = 1
+            graph[dis[1]-1][dis[0] - 1] = 1
+        for i in range(N):
+            if colors[i] == 0 and not self.dfs(graph, colors, i, 1, N):
+                return False
+        return True
