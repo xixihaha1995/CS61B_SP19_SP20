@@ -6,13 +6,16 @@ for i in range(n):
 num = sorted(map(int, input().split()))
 
 inord = []
-
 def inorder(root):
     if root != -1:
         inorder(tree[root][0])
         inord.append(root)
         inorder(tree[root][1])
 
+inorder(0)
+res = [0]*n
+for i in range(n):
+    res[inord[i]] =  num[i]
 
 lev, cur = [0], [0]
 while cur:
@@ -20,15 +23,6 @@ while cur:
     if chd:
         lev.extend(chd)
     cur = chd
-
-inorder(0)
-# print(lev)
-# print(inord)
-
-res = [0] * n
-for i in range(n):
-    res[inord[i]] = num[i]
-
 ans = [res[x] for x in lev]
 
 print(num)
