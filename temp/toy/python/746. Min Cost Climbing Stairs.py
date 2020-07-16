@@ -4,15 +4,14 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
-        dp = [0] * (len(cost)+1)
-        cost.append(0)
-
-        dp[0] = cost[0]
-        dp[1] = cost[1]
-        for i in range(2,len(cost)):
-            dp[i] = min(dp[i-1],dp[i-2])+ cost[i]
-        return dp[-1]
-
+        f1 = 0
+        f2 = 0
+        mincost =
+        for i in range(len(cost))
+            mincost =  cost[i] + min(f1, f2)
+            f1= f2
+            f2 = mincost
+        return min(f1, f2)
 
 if __name__ == '__main__':
     print(Solution().minCostClimbingStairs(  [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]))
