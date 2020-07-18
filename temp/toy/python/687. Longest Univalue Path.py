@@ -2,7 +2,8 @@ class Solution:
     def longestUnivaluePath(self, root: TreeNode) -> int:
         if not root: return 0
         self.ans = 0
-        return self.leng(root)
+        self.leng(root)
+        return self.ans
 
     def leng(self, root):
         if not root: return 0
