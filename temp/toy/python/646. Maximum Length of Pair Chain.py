@@ -6,6 +6,6 @@ class Solution:
         for i in range(len(pairs)):
             for j in range(i):
                 if pairs[i][0] > pairs[j][1]:
-                    dp[i] = max(dp[j], dp[i]+1)
+                    dp[i] = max(dp[j]+1, dp[i])
                     ans = max(dp[i], ans)
         return ans
