@@ -7,5 +7,8 @@ class Solution:
                 left += 1
                 right -= 1
             else:
-                return isPalindrome(s[left+1, right +1]) or isPalindrome(s[left, right])
+                return isPalindrome(s[left+1: right +1]) or isPalindrome(s[left: right])
         return True
+print(Solution().validPalindrome(
+    "abca"
+))
