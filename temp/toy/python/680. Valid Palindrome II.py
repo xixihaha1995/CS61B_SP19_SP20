@@ -1,0 +1,14 @@
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        isPalindrome = lambda s : s==s[::-1]
+        left, right = 0, len(s) - 1
+        while left < right:
+            if s[left] == s[right]:
+                left += 1
+                right -= 1
+            else:
+                return isPalindrome(s[left+1: right +1]) or isPalindrome(s[left: right])
+        return True
+print(Solution().validPalindrome(
+    "abca"
+))
