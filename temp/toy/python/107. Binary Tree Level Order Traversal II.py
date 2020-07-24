@@ -6,21 +6,18 @@
 #         self.right = right
 class Solution:
     def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
-        if not root:
-            return root
-        res =  []
-        queue = collections.deque()
-        queue.append(root)
-        while queue:
-            level = []
-            for i in range(len(queue)):
-                node = queue.popleft()
-                if node.left:
-                    level.append(node.left.val)
-                    queue.append(node.left)
-                if node.right:
-                    level.append(node.right.val)
-                    queue.append(node.right)
-                level.append(node.val)
-            res.append(level)
-        return res
+        if not root: return root
+        nextLevelQueue = collections.deque()
+        nextLevelQueue.append(root)
+        result = []
+        while nextLevelQueue:
+            curLevel = []
+            for i in range(len(nextLevelQueue)):
+                curNode = nextLevelQueue.popleft()
+                curLevel.append(curNode.val)
+                if curNode.left:
+                    nextLevelQueue.append(curNode.left)
+                if curNode.right:
+                    nextLevelQueue.append(curNode.right)
+            result.append(curLevel)
+        return result[::-1]
