@@ -10,4 +10,4 @@ class Solution:
                 flowerbed[pos] = 1
                 count += 1
             pos += 1
-        return count <= n
+        return count >= n
