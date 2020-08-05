@@ -6,9 +6,9 @@ class Solution:
         count = 0
         for num in nums:
             presum += num
-            if store[presum - k]:
+            if presum - k in store:
                 count += store[presum - k]
-            if num in store:
-                store[num] += 1
-            else: store[num] = 1
+            if presum in store:
+                store[presum] += 1
+            else: store[presum] = 1
         return count
