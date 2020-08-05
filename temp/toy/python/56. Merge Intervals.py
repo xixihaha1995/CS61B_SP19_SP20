@@ -13,4 +13,4 @@ class Solution:
             else:
                 res[idx][1] = max(res[idx][1], interval[1])
 
-        return res
+        return res[:idx + 1]
