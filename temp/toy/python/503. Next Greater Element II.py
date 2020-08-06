@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
         n = len(nums)
@@ -7,5 +10,9 @@ class Solution:
             while stack and stack[-1] <= nums[i % n]:
                 stack.pop()
             res[i%n] = -1 if not stack else stack[-1]
-            stack.append(i%n)
+            stack.append(nums[i%n])
         return res
+
+print(Solution().nextGreaterElements(
+    [1,2,1]
+))
