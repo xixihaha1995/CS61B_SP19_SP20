@@ -1,12 +1,14 @@
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        hashTable = dict()
         for num in nums:
-            hashTable[num] = 1
+            if nums[abs(num)-1] < 0:
+                continue
+            else:nums[abs(num)-1] *= -1
         res = []
-        for i in range(1, len(nums) + 1):
-            if i not in hashTable:
-                res.append(i)
+        for i in range(len(nums)):
+            if nums[i] > 0 :
+                res.append(i+1)
+        return res
 
 
 
