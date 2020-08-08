@@ -4,12 +4,15 @@ class Solution:
         res = 0
         while queue:
             node = queue.pop()
-            if node.left and (not node.left.left and not node.left.right):
-                res += root.left.val
-                if node.right:
-                    queue.append(node.right)
-            else:
-                queue.append(node.left)
-                queue.append(node.right)
+            if node:
+                if node.left and (not node.left.left and not node.left.right):
+                    res += root.left.val
+                    if node.right:
+                        queue.append(node.right)
+                else:
+                    if node.left:
+                        queue.append(node.left)
+                    if node.right:
+                        queue.append(node.right)
 
         return res
