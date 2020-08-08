@@ -20,14 +20,14 @@ class Solution:
                 if window[curChar] == need[curChar]:
                     valid += 1
             while right - left >= len(p):
-                if valid == len(p):
+                if valid == len(need):
                     res.append(left)
                 deleChar = s[left]
                 left += 1
                 if deleChar in need:
                     if window[deleChar] == need[deleChar]:
                         valid -= 1
-                    window[d] -= 1
+                    window[deleChar] -= 1
         return res
 
 
