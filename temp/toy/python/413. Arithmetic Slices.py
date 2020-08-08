@@ -1,8 +1,11 @@
 class Solution:
     def numberOfArithmeticSlices(self, A: List[int]) -> int:
-        left, right = 0,0
-        valid = 0
-        while right < len(A):
-            right += 1
-            while right - left >= 2:
+        dp = [0] * len(A):
+        temp = A[1] - A[0]
+        for i in range(2,len(A)):
+            curTemp = A[i] - A[i-1]
+            if curTemp == temp:
+                dp[i] += dp[i-1]
+                temp = curTemp
+        return sum(dp)
 
