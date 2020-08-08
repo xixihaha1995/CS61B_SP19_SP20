@@ -6,7 +6,7 @@ class Solution:
             node = queue.pop()
             if node:
                 if node.left and (not node.left.left and not node.left.right):
-                    res += root.left.val
+                    res += node.left.val
                     if node.right:
                         queue.append(node.right)
                 else:
