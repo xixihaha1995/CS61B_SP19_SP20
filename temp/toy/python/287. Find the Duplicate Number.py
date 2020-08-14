@@ -12,9 +12,9 @@ class Solution:
                     cnt += 1
             if cnt <= mid:
                 left = mid + 1
-            else: right = mid - 1
-        return mid
+            else: right = mid
+        return left
 
 print(Solution().findDuplicate(
-    [3,1,3,4,2]
+    [1,3,2,4,4]
 ))
