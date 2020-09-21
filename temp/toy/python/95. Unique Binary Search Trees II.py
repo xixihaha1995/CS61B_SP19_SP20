@@ -7,18 +7,19 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
     def generateTrees(self, n: int) -> List[TreeNode]:
         if n == 0: return []
-        return self.helper(1,n)
+        return self.helper(1, n)
 
     def helper(self, left, right):
         if left > right:
             return [None]
         res = []
         for i in range(left, right + 1):
-            leftNodes = self.helper(left, i-1)
-            rightNodes = self.helper(i+1, right)
+            leftNodes = self.helper(left, i - 1)
+            rightNodes = self.helper(i + 1, right)
 
             for leftNode in leftNodes:
                 for rightNode in rightNodes:
@@ -27,5 +28,6 @@ class Solution:
                     root.right = rightNode
                     res.append(root)
         return res
+
 
 print(Solution().generateTrees(3))
