@@ -9,4 +9,6 @@ int main()
     cout << "enter a sentence\n";
     getline(cin, mystr);
     cout << "The sentence is: " << mystr << endl;
+    //hhhhh
+    cout << "who are you";
 }
