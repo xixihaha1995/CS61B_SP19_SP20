@@ -1,10 +1,12 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main()
 {
-    int i;
-    cout << "enter a numer\n";
-    cin >> i;
-    cout << "The number is " << i << endl;
+
+    string mystr;
+    cout << "enter a sentence\n";
+    getline(cin, mystr);
+    cout << "The sentence is: " << mystr << endl;
 }
