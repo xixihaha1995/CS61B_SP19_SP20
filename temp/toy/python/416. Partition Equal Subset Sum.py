@@ -5,12 +5,12 @@ class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         total = sum(nums)
         target = total / 2
-        if target % 2 == 1: return False
+        if total % 2 == 1: return False
         dp = [False] * (target + 1)
         dp[0] = True
         if nums[0] <= target:
             dp[nums[0]] = True
-        for i in range(len(nums)):
+        for i in range(1,len(nums)):
             for j in range(target, nums[i]-1,-1):
                 if dp[target]: return True
                 dp[j] = dp[j] or dp[j - nums[i]]
