@@ -4,7 +4,7 @@ from typing import List
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         total = sum(nums)
-        target = total / 2
+        target = total // 2
         if total % 2 == 1: return False
         dp = [False] * (target + 1)
         dp[0] = True
